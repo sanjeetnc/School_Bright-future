@@ -1,0 +1,406 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admissions - Bright Future Academy</title>
+
+<!-- GOOGLE FONT -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- TAILWIND -->
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- GSAP -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<style>
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#020617;
+  overflow-x:hidden;
+}
+
+/* GLOW BLOBS */
+
+.blob{
+  position:fixed;
+  border-radius:9999px;
+  filter:blur(120px);
+  opacity:0.2;
+  pointer-events:none;
+}
+
+.blob1{
+  width:400px;
+  height:400px;
+  background:#3b82f6;
+  top:-100px;
+  left:-100px;
+}
+
+.blob2{
+  width:400px;
+  height:400px;
+  background:#facc15;
+  bottom:-100px;
+  right:-100px;
+}
+
+/* INPUTS */
+
+input,
+textarea,
+select{
+  transition:0.4s;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  outline:none;
+  border-color:#facc15;
+  transform:translateY(-2px);
+}
+
+/* BUTTON */
+
+.submit-btn:hover{
+  transform:translateY(-4px) scale(1.02);
+}
+
+@keyframes popup{
+
+  from{
+    opacity:0;
+    transform:scale(0.7);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+
+}
+</style>
+
+</head>
+
+<body class="text-white">
+
+<!-- BLOBS -->
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
+<!-- HERO -->
+
+<section class="min-h-screen flex items-center justify-center px-6 py-24">
+
+<div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+
+  <!-- LEFT CONTENT -->
+
+  <div class="admission-text">
+
+    <p class="uppercase tracking-[8px] text-amber-300 font-semibold mb-6">
+
+      Admissions Open 2026
+
+    </p>
+
+    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-8">
+
+      Start Your Child’s Bright Future
+
+    </h1>
+
+    <p class="text-slate-300 text-xl leading-relaxed mb-10">
+
+      Join Bright Future Academy and provide your child with
+      world-class education, innovation, leadership, creativity,
+      and holistic development.
+
+    </p>
+
+    <!-- FEATURES -->
+
+    <div class="space-y-6">
+
+      <div class="flex items-center gap-4">
+
+        <div class="w-12 h-12 rounded-2xl bg-blue-900 flex items-center justify-center text-xl">
+
+          ☞
+
+        </div>
+
+        <p class="text-lg text-slate-300">
+
+          Expert Faculty & Smart Classrooms
+
+        </p>
+
+      </div>
+
+      <div class="flex items-center gap-4">
+
+        <div class="w-12 h-12 rounded-2xl bg-amber-300 text-black flex items-center justify-center text-xl">
+
+          ★
+
+        </div>
+
+        <p class="text-lg text-slate-300">
+
+          Award Winning Academic Excellence
+
+        </p>
+
+      </div>
+
+      <div class="flex items-center gap-4">
+
+        <div class="w-12 h-12 rounded-2xl bg-blue-500 flex items-center justify-center text-xl">
+
+          ◉
+
+        </div>
+
+        <p class="text-lg text-slate-300">
+
+          Modern Global Learning Environment
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FORM -->
+
+  <div
+  class="admission-form bg-white/10 backdrop-blur-2xl border border-white/10 rounded-[40px] p-10 shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+  >
+
+    <h2 class="text-4xl font-bold mb-10">
+
+      Admission Form
+
+    </h2>
+
+    <form method="POST" class="space-y-6" id="admissionForm">
+      {% csrf_token %}
+      <!-- NAME -->
+
+      <input
+      type="text"
+      name="student_name"
+      placeholder="Student Name"
+      required
+      class="w-full p-5 rounded-2xl bg-white/10 border border-white/10 text-white"
+      >
+
+      <!-- EMAIL -->
+
+      <input
+      type="email"
+      name="email"
+      placeholder="Parent Email"
+      required
+      class="w-full p-5 rounded-2xl bg-white/10 border border-white/10 text-white"
+      >
+
+      <!-- PHONE -->
+
+      <input
+      type="tel"
+      name="phone"
+      placeholder="Phone Number"
+      required
+      class="w-full p-5 rounded-2xl bg-white/10 border border-white/10 text-white"
+      >
+
+      <!-- GRADE -->
+
+      <select
+      name="grade"
+      class="w-full p-5 rounded-2xl bg-white/10 border border-white/10 text-white"
+      >
+
+        <option class="text-black">Grade 1</option>
+        <option class="text-black">Grade 2</option>
+        <option class="text-black">Grade 3</option>
+        <option class="text-black">Grade 4</option>
+        <option class="text-black">Grade 5</option>
+        <option class="text-black">Grade 6</option>
+        <option class="text-black">Grade 7</option>
+        <option class="text-black">Grade 8</option>
+        <option class="text-black">Grade 9</option>
+        <option class="text-black">Grade 10</option>
+        <option class="text-black">Grade 11</option>
+        <option class="text-black">Grade 12</option>
+
+      </select>
+
+      <!-- MESSAGE -->
+
+      <textarea
+      name="message"
+      rows="5"
+      placeholder="Additional Message"
+      class="w-full p-5 rounded-2xl bg-white/10 border border-white/10 text-white resize-none"
+      ></textarea>
+
+      <!-- BUTTON -->
+
+    <button
+    type="submit"
+    class="bg-amber-300 text-black px-10 py-4 rounded-2xl font-bold hover:scale-105 transition duration-500"
+    >
+
+    Submit Admission
+
+    </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- GSAP -->
+
+<script>
+
+// HERO ANIMATION
+
+gsap.from(".admission-text", {
+
+  x:-80,
+  opacity:0,
+  duration:1.2,
+  ease:"power3.out"
+
+});
+
+gsap.from(".admission-form", {
+
+  x:80,
+  opacity:0,
+  duration:1.2,
+  ease:"power3.out"
+
+});
+
+// FLOATING EFFECT
+
+gsap.to(".blob1", {
+
+  y:40,
+  x:30,
+  repeat:-1,
+  yoyo:true,
+  duration:6,
+  ease:"sine.inOut"
+
+});
+
+gsap.to(".blob2", {
+
+  y:-40,
+  x:-30,
+  repeat:-1,
+  yoyo:true,
+  duration:7,
+  ease:"sine.inOut"
+
+});
+
+</script>
+{% if success %}
+
+<div
+id="successPopup"
+class="fixed inset-0 z-[99999] flex items-center justify-center bg-black/70 backdrop-blur-md"
+>
+
+<div
+class="bg-white rounded-[35px] p-10 max-w-md text-center shadow-[0_20px_80px_rgba(0,0,0,0.35)] animate-[popup_0.5s_ease]"
+>
+
+<div
+class="w-24 h-24 mx-auto mb-6 rounded-full bg-green-100 flex items-center justify-center text-5xl"
+>
+
+✅
+
+</div>
+
+<h2 class="text-4xl font-bold text-slate-900 mb-4">
+
+Application Submitted!
+
+</h2>
+
+<p class="text-slate-600 text-lg leading-relaxed mb-8">
+
+Thank you for applying to Bright Future Academy.
+Our team will contact you soon.
+
+</p>
+
+<button
+onclick="closePopup()"
+class="bg-yellow-400 hover:bg-yellow-300 text-black px-8 py-4 rounded-2xl font-bold text-lg transition duration-300"
+>
+
+OK
+
+</button>
+
+</div>
+
+</div>
+
+{% endif %}
+
+
+<script>
+
+function closePopup(){
+
+  const popup = document.getElementById("successPopup");
+
+  popup.style.opacity = "0";
+
+  setTimeout(() => {
+
+    popup.style.display = "none";
+
+  }, 300);
+
+}
+
+</script>
+</body>
+
+</html>

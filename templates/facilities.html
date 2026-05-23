@@ -1,0 +1,353 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Facilities - Bright Future Academy</title>
+
+  <!-- GOOGLE FONT -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- TAILWIND -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#020617;
+      overflow-x:hidden;
+    }
+
+    .nav-link{
+      position:relative;
+    }
+
+    .nav-link::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0%;
+      height:2px;
+      background:#facc15;
+      transition:0.4s;
+    }
+
+    .nav-link:hover::after{
+      width:100%;
+    }
+
+    .card-glow:hover{
+    box-shadow:
+    0 0 40px rgba(59,130,246,0.25),
+    0 0 80px rgba(59,130,246,0.15);
+    }
+    ::-webkit-scrollbar{
+    width:10px;
+    }
+
+    ::-webkit-scrollbar-track{
+    background:#020617;
+    }
+
+    ::-webkit-scrollbar-thumb{
+    background:#facc15;
+    border-radius:999px;
+    }
+  </style>
+
+</head>
+
+<body class="text-white">
+
+<!-- NAVBAR -->
+
+<header
+class="fixed top-0 left-0 w-full z-50 bg-[#020617]/80 backdrop-blur-xl border-b border-white/10"
+>
+
+<nav class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+
+  <!-- LOGO -->
+
+  <div class="flex items-center gap-3">
+
+    <div class="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center text-white font-bold text-xl">
+
+      B
+
+    </div>
+
+    <div>
+
+      <h1 class="text-xl font-bold text-white">
+
+        Bright Future Academy
+
+      </h1>
+
+      <p class="text-sm text-amber-300 uppercase tracking-[4px] font-semibold">
+
+        Excellence In Education
+
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- MENU -->
+
+  <div class="hidden md:flex items-center gap-10">
+
+    <a href="index.html" class="nav-link text-white hover:text-amber-300">
+
+      Home
+
+    </a>
+
+    <a href="about.html" class="nav-link text-white hover:text-amber-300">
+
+      About
+
+    </a>
+
+    <a href="facilities.html" class="nav-link text-amber-300">
+
+      Facilities
+
+    </a>
+
+    <a href="gallery.html" class="nav-link text-white hover:text-amber-300">
+
+      Gallery
+
+    </a>
+
+    <a href="contact.html" class="nav-link text-white hover:text-amber-300">
+
+      Contact
+
+    </a>
+
+  </div>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="pt-40 pb-24 px-6">
+
+  <div class="max-w-7xl mx-auto">
+
+    <!-- TITLE -->
+
+    <div class="text-center mb-20">
+
+      <p class="uppercase tracking-[6px] text-amber-300 font-semibold mb-4">
+
+        OUR CAMPUS
+
+      </p>
+
+      <h1 class="text-5xl md:text-7xl font-extrabold">
+
+        Our Facilities
+
+      </h1>
+
+    </div>
+
+    <!-- GRID -->
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- CARD -->
+
+      <div class="bg-white/10 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:-translate-y-3 transition duration-500">
+
+        <img
+        src="{% static 'images/sc.jpeg' %}"
+        class="w-full h-64 object-cover"
+        >
+
+        <div class="p-8">
+
+          <h2 class="text-3xl font-bold mb-4">
+
+            Smart Classrooms
+
+          </h2>
+
+          <p class="text-slate-300 leading-relaxed">
+
+            Interactive digital learning with modern technology.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+
+      <div class="bg-white/10 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:-translate-y-3 transition duration-500">
+
+        <img
+        src="{% static 'images/sl.jpeg' %}"
+        class="w-full h-64 object-cover"
+        >
+
+        <div class="p-8">
+
+          <h2 class="text-3xl font-bold mb-4">
+
+            Science Labs
+
+          </h2>
+
+          <p class="text-slate-300 leading-relaxed">
+
+            Advanced practical learning facilities for students.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+
+      <div class="bg-white/10 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:-translate-y-3 transition duration-500">
+
+        <img
+        src="images/library.jpeg"
+        class="w-full h-64 object-cover"
+        >
+
+        <div class="p-8">
+
+          <h2 class="text-3xl font-bold mb-4">
+
+            Library
+
+          </h2>
+
+          <p class="text-slate-300 leading-relaxed">
+
+            Thousands of books and digital resources.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+            <div class="bg-white/10 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:-translate-y-3 transition duration-500">
+
+        <img
+        src="{% static 'images/sport.jpeg' %}"
+        class="w-full h-64 object-cover"
+        >
+
+        <div class="p-8">
+
+          <h2 class="text-3xl font-bold mb-4">
+
+            Sport Facilities
+
+          </h2>
+
+          <p class="text-slate-300 leading-relaxed">
+
+            Our world-class sports facilities inspire teamwork, discipline, and excellence in every student.
+
+          </p>
+
+        </div>
+
+      </div>
+      <!-- CARD -->
+            <div class="bg-white/10 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:-translate-y-3 transition duration-500">
+
+        <img
+        src="{% static 'images/cl.jpeg' %}"
+        class="w-full h-64 object-cover"
+        >
+
+        <div class="p-8">
+
+          <h2 class="text-3xl font-bold mb-4">
+
+            Computer Labs
+
+          </h2>
+
+          <p class="text-slate-300 leading-relaxed">
+
+            Our advanced computer labs provide students with hands-on learning and modern digital skills.
+
+          </p>
+
+        </div>
+
+      </div>
+      <!-- CARD -->
+            <div class="bg-white/10 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:-translate-y-3 transition duration-500">
+
+        <img
+        src="{% static 'images/auditorium.jpeg' %}"
+        class="w-full h-64 object-cover"
+        >
+
+        <div class="p-8">
+
+          <h2 class="text-3xl font-bold mb-4">
+
+            Auditorium
+
+          </h2>
+
+          <p class="text-slate-300 leading-relaxed">
+
+            Our spacious auditorium hosts cultural events, seminars, and performances that nurture student talent and creativity.
+
+          </p>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="border-t border-white/10 py-10 text-center text-slate-400">
+
+  © 2026 Bright Future Academy. All Rights Reserved.
+
+</footer>
+
+</body>
+
+</html>
