@@ -15,4 +15,5 @@ urlpatterns = [
 
     path('admission/', views.admission, name='admission'),
 
+
 ]

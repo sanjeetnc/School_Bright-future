@@ -1,1292 +1,335 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
+{% block title %}
+Home
+{% endblock %}
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#020617">
+{% block content %}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- HERO -->
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- CINEMATIC HERO -->
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <title>Bright Future Academy</title>
-  <script>
-
-  history.scrollRestoration = "manual";
-
-</script>
-  
-  <!-- SWIPER -->
-
-    <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-  <!-- Tailwind -->
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- GSAP -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
-  <!-- ScrollTrigger -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-
-
-
-
-
-
-
-
-  <!-- APP JS -->
-
-<script defer src="{% static 'js/app.js' %}"></script>
-
-  <style>
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body {
-
-    font-family: 'Inter', sans-serif;
-
-    overflow-x: hidden;
-
-    position: relative;
-
-    background: #020617;
-
-    }
-
-    /* CUSTOM CURSOR */
-
-    #cursor{
-      width:20px;
-      height:20px;
-      border-radius:50%;
-      background:#1e3a8a;
-      position:fixed;
-      top:0;
-      left:0;
-      pointer-events:none;
-      z-index:9999;
-      transform:translate(-50%,-50%);
-      mix-blend-mode:difference;
-    }
-
-    /* NAVBAR EFFECT */
-
-.nav-scrolled{
-  background: rgba(2, 6, 23, 0.75);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-    @keyframes marquee {
-
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
-
-    }
-
-    .marquee {
-
-    display: inline-block;
-
-    animation: marquee 20s linear infinite;
-
-    }
-
-    /* =========================
-   FLOATING BLOBS
-========================= */
-
-    .blob {
-
-    position: fixed;
-
-    border-radius: 9999px;
-
-    filter: blur(100px);
-
-    opacity: 0.18;
-
-    pointer-events: none;
-
-    z-index: 0;
-
-    animation: floatBlob 18s ease-in-out infinite;
-
-    }
-
-
-
-    /* BLOB 1 */
-
-    .blob1 {
-
-    width: 350px;
-
-    height: 350px;
-
-    background: #3b82f6;
-
-    top: 10%;
-
-    left: -100px;
-
-    }
-
-
-
-    /* BLOB 2 */
-
-    .blob2 {
-
-    width: 400px;
-
-    height: 400px;
-
-    background: #fbbf24;
-
-    bottom: 10%;
-
-    right: -120px;
-
-    animation-delay: 4s;
-
-    }
-
-
-
-    /* BLOB 3 */
-
-    .blob3 {
-
-    width: 300px;
-
-    height: 300px;
-
-    background: #6366f1;
-
-    top: 50%;
-
-    left: 50%;
-
-    animation-delay: 8s;
-
-    }
-
-    .active-link{
-    color:#facc15;
-    }
-
-    .active-link::after{
-    width:100%;
-    height:2px;
-    background:#facc15;
-    position:absolute;
-    left:0;
-    bottom:-6px;
-    transition:0.4s;
-    }
-
-
-    /* FLOAT ANIMATION */
-
-    @keyframes floatBlob {
-
-    0% {
-
-        transform: translateY(0px) translateX(0px) scale(1);
-
-    }
-
-    25% {
-
-        transform: translateY(-40px) translateX(30px) scale(1.08);
-
-    }
-
-    50% {
-
-        transform: translateY(20px) translateX(-20px) scale(0.95);
-
-    }
-
-    75% {
-
-        transform: translateY(-20px) translateX(40px) scale(1.05);
-
-    }
-
-    100% {
-
-        transform: translateY(0px) translateX(0px) scale(1);
-
-    }
-
-    }
-
-body.loading{
-  overflow:hidden;
-}
-
-#loader{
-  transition:opacity 1s ease;
-}
-
-.hero-btn{
-  position:relative;
-  overflow:hidden;
-}
-
-.hero-btn::before{
-  content:'';
-  position:absolute;
-  width:300px;
-  height:300px;
-  background:rgba(255,255,255,0.15);
-  border-radius:50%;
-  top:100%;
-  left:100%;
-  transition:0.8s;
-}
-
-.hero-btn:hover::before{
-  top:-80px;
-  left:-80px;
-}
-
-
-
-/* NAV LINK UNDERLINE */
-    .nav-link{
-  position: relative;
-}
-
-.nav-link::after{
-  content:'';
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  width:0%;
-  height:2px;
-  background:#facc15;
-  transition:0.4s;
-}
-
-.nav-link:hover::after{
-  width:100%;
-}
-
-    /* =========================
-RESPONSIVE FIXES
-========================= */
-
-html, body {
-  overflow-x: hidden;
-  width: 100%;
-}
-
-/* Images */
-img {
-  max-width: 100%;
-  display: block;
-}
-
-/* Mobile Typography */
-
-@media (max-width: 768px) {
-
-  h1 {
-    font-size: 3rem !important;
-    line-height: 1.1 !important;
-  }
-
-  h2 {
-    font-size: 2.2rem !important;
-    line-height: 1.2 !important;
-  }
-
-  h3 {
-    font-size: 1.5rem !important;
-  }
-
-  p {
-    font-size: 1rem !important;
-  }
-
-  section {
-    padding-top: 90px !important;
-    padding-bottom: 90px !important;
-  }
-
-  .hero {
-    height: auto;
-    min-height: 100vh;
-    padding-top: 120px;
-    padding-bottom: 100px;
-  }
-
-  .hero-content {
-    width: 100%;
-  }
-
-  .gallery-card,
-  .swiper-slide img,
-  #principal img,
-  #about img {
-    height: auto !important;
-  }
-
-  .achievement-card {
-    width: 100% !important;
-  }
-
-  .faq-question {
-    font-size: 1.2rem !important;
-  }
-
-  .marquee {
-    font-size: 50px !important;
-  }
-
-  #cursor {
-    display: none;
-  }
-
-}
-
-.hero-content a{
-  min-width:260px;
-  text-align:center;
-}
-
-button {
-  transition: all 0.35s ease;
-}
-
-button:hover {
-  transform: translateY(-3px);
-}
-
-  </style>
-
-</head>
-
-<body class="bg-white text-white">
-
-    <div class="fixed inset-0 opacity-[0.03] pointer-events-none z-[999]">
-
-    <div class="w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
-
-    </div>
-
-    <!-- LOADER -->
-<div
-  id="loader"
-  class="fixed inset-0 bg-black z-[99999] flex items-center justify-center overflow-hidden"
+<section
+  id="home"
+  class="relative min-h-screen flex items-center justify-center overflow-hidden"
 >
 
+  <!-- VIDEO BACKGROUND -->
+
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    class="absolute inset-0 w-full h-full object-cover"
+  >
+
+    <source
+      src="{% static 'videos/school_copy.mp4' %}"
+      type="video/mp4"
+    >
+
+  </video>
+
+  <!-- DARK OVERLAY -->
 
   <div
-    class="absolute w-[500px] h-[500px] bg-blue-500/20 blur-[140px] rounded-full"
+    class="absolute inset-0 bg-black/20"
   ></div>
 
-  <!-- FLOATING BLOBS -->
+  <!-- GRADIENT OVERLAY -->
 
-<div class="blob blob1"></div>
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-black/20 via-blue-950/10 to-black/50"
+  ></div>
 
-<div class="blob blob2"></div>
+  <!-- BLUE GLOW -->
 
-<div class="blob blob3"></div>
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-500/20 blur-[140px] rounded-full"
+  ></div>
 
   <!-- CONTENT -->
 
-  <div class="relative z-10 text-center">
+  <div
+    class="relative z-10 text-center px-6 max-w-6xl"
+  >
 
-    <h1
-      class="loader-text text-5xl md:text-7xl font-extrabold text-white tracking-wide"
+    <!-- SMALL TITLE -->
+
+    <p
+      class="uppercase tracking-[10px] text-amber-300 font-semibold mb-8 hero-subtitle"
     >
 
-      Bright Future Academy
+      Excellence • Innovation • Leadership
+
+    </p>
+
+    <!-- MAIN TITLE -->
+
+    <h1
+      class="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight text-white mb-10 hero-title"
+    >
+
+      Building Future <br>
+      Leaders Today
 
     </h1>
 
-    <div
-      class="mt-8 w-[250px] h-[4px] bg-white/10 rounded-full overflow-hidden mx-auto"
+    <!-- DESCRIPTION -->
+
+    <p
+      class="text-lg md:text-2xl text-slate-200 max-w-4xl mx-auto leading-relaxed mb-14 hero-text"
     >
 
-      <!-- LOADING BAR -->
+      Empowering students through modern education,
+      creativity, discipline, innovation,
+      and world-class learning experiences.
+
+    </p>
+
+    <!-- BUTTONS -->
+
+    <div
+      class="flex flex-col sm:flex-row justify-center gap-6 hero-buttons"
+    >
+
+      <!-- APPLY -->
+
+      <a
+        href="/admission/"
+        class="group relative overflow-hidden bg-yellow-400 text-black px-10 py-5 rounded-2xl font-bold text-lg shadow-[0_10px_40px_rgba(251,191,36,0.5)] hover:scale-105 transition duration-500"
+      >
+
+        <span class="relative z-10">
+
+          Apply Now
+
+        </span>
+
+        <div
+          class="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition duration-500"
+        ></div>
+
+      </a>
+
+      <!-- EXPLORE -->
+
+      <a
+        href="/gallery/"
+        class="border border-white/20 bg-white/10 backdrop-blur-xl text-white px-12 py-5 rounded-2xl text-lg font-semibold hover:bg-white hover:text-black transition duration-500"
+      >
+
+        Explore Campus
+
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- SCROLL INDICATOR -->
+
+  <div
+    class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
+  >
+
+    <div
+      class="w-[35px] h-[60px] rounded-full border-2 border-white/40 flex justify-center pt-3"
+    >
 
       <div
-        id="loaderBar"
-        class="h-full w-0 bg-amber-300 rounded-full"
+        class="w-2 h-2 rounded-full bg-white animate-bounce"
       ></div>
 
     </div>
 
   </div>
 
-</div>
+</section>
 
-  <!-- CURSOR -->
-
-  <div id="cursor"></div>
-
-  <!-- NAVBAR -->
-
-  <header
-    id="navbar"
-    class="fixed top-0 left-0 w-full z-50 bg- shadow-md transition-all duration-300"
-  >
-
-    <nav class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-
-      <!-- LOGO -->
-
-      <div class="flex items-center gap-3">
-
-        <div class="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center text-white font-bold text-xl">
-          B
-        </div>
-
-        <div>
-          <h1 class="text-xl font-bold text-slate-900">
-            Bright Future Academy
-          </h1>
-
-          <p class="text-sm text-yellow-400 uppercase tracking-[4px] font-semibold">
-            Excellence In Education
-          </p>
-        </div>
-
-      </div>
-
-      <!-- DESKTOP MENU -->
-
-    <div
-    class="hidden lg:flex items-center gap-10 font-medium"
-    >
-
-<a href="/" class="nav-link active-link  text-white hover:text-amber-300 transition duration-300">
-  Home
-</a>
-
-<a href="/about" class="nav-link hover:text-amber-300 transition duration-300">
-  About
-</a>
-
-<a href="/facilities" class="nav-link text-white hover:text-amber-300 transition duration-300">
-  Facilities
-</a>
-
-<a href="/gallery" class="nav-link text-white hover:text-amber-300 transition duration-300">
-  Gallery
-</a>
-
-<a href="/contact" class="nav-link text-white hover:text-amber-300 transition duration-300">
-  Contact
-</a>
-    </div>
-
-      <!-- RIGHT -->
-
-      <div class="flex items-center gap-4">
-
-        <a
-        href="/admission/"
-        class="hidden md:block bg-amber-300 text-black px-6 py-3 rounded-xl font-semibold shadow-lg hover:bg-white hover:text-black hover:scale-105 transition duration-300"
-        >
-
-        Admissions Open
-
-        </a>
-
-        <!-- MOBILE BUTTON -->
-
-        <button
-          id="menuBtn"
-          class="md:hidden flex flex-col gap-1"
-        >
-
-          <span class="w-7 h-[3px] bg-white rounded-full"></span>
-
-          <span class="w-7 h-[3px] bg-white rounded-full"></span>
-
-          <span class="w-7 h-[3px] bg-white rounded-full"></span>
-
-        </button>
-
-      </div>
-
-    </nav>
-
-    <!-- MOBILE MENU -->
-
-    <div
-      id="mobileMenu"
-        class="hidden md:hidden bg-[#020617] border-t border-white/10"
-    >
-
-      <div class="flex flex-col p-6 gap-5 text-lg">
-<a href="/" class="nav-link text-white hover:text-amber-300 transition duration-300">
-  Home
-</a>
-
-<a href="/about" class="nav-link text-white hover:text-amber-300 transition duration-300">
-  About
-</a>
-
-<a href="/facilities" class="nav-link text-white hover:text-amber-300 transition duration-300">
-  Facilities
-</a>
-
-<a href="/gallery" class="nav-link text-white hover:text-amber-300 transition duration-300">
-  Gallery
-</a>
-
-<a href="/contact" class="nav-link text-white hover:text-amber-300 transition duration-300">
-  Contact
-</a>
-
-      </div>
-
-    </div>
-
-  </header>
-
-
-<!-- HERO -->
-<div class="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
-<!-- HERO -->
+<!-- NEWS -->
 
 <section
-  id="home"
-  class="hero relative min-h-screen overflow-hidden flex items-center justify-center text-center py-32"
+  id="news"
+  class="relative py-5 bg-gradient-to-r from-blue-950 via-slate-900 to-blue-950 overflow-hidden border-y border-white/10"
 >
 
-  <!-- BACKGROUND IMAGE -->
-<img
-src="{% static 'images/home.jpeg' %}"
-class="absolute inset-0 w-full h-full object-cover scale-110 hero-bg z-0"
->
-  <!-- DARK OVERLAY -->
+  <div class="relative z-10 overflow-hidden whitespace-nowrap">
 
-<div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/65 to-black/80 z-0"></div>
+    <div class="news-marquee flex items-center gap-16">
 
-  <!-- GRADIENT GLOW -->
+      {% for news in news_items %}
 
-  <div class="absolute w-[600px] h-[600px] bg-blue-500/20 blur-[140px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+      <div class="flex items-center gap-4 shrink-0">
 
-  <!-- CONTENT -->
+        <span
+          class="bg-yellow-400 text-black text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider shadow-lg"
+        >
 
-<div class="hero-content relative z-[999] px-6 max-w-5xl backdrop-blur-[2px] rounded-3xl flex flex-col items-center">
-    <!-- SMALL TITLE -->
+          {{ news.category }}
 
-    <p class="uppercase tracking-[8px] text-amber-300 drop-shadow-[0_0_12px_rgba(251,191,36,0.9)] mb-6 text-sm md:text-base font-semibold">
+        </span>
 
-    Excellence In Education
+        <p class="text-white text-lg md:text-xl font-medium">
 
-    </p>
-    <!-- MAIN TITLE -->
+          {{ news.title }}
 
-    <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-8 text-white drop-shadow-[0_5px_25px_rgba(255,255,255,0.35)]">
+        </p>
 
-      Building Bright <br>
-      Futures Together
+      </div>
 
-    </h1>
+      {% endfor %}
 
-    <!-- SUBTITLE -->
-
-    <p class="text-lg md:text-2xl text-amber-300 drop-shadow-[0_0_10px_rgba(251,191,36,0.8)] max-w-3xl mx-auto leading-relaxed mb-12">
-
-      Empowering students through innovation,
-      leadership, creativity, and world-class education.
-
-    </p>
-<!-- BUTTONS -->
-
-<!-- BUTTONS -->
-
-<div class="relative z-[999] flex flex-col md:flex-row gap-8 justify-center items-center mt-14">
-
-  <!-- APPLY BUTTON -->
-
-  <a
-    href="/admission/#admission-form"
-    class="relative z-[999] inline-flex items-center justify-center bg-yellow-400 hover:bg-yellow-300 text-black px-12 py-5 rounded-2xl font-extrabold text-xl shadow-[0_0_35px_rgba(250,204,21,0.65)] hover:scale-110 transition duration-500"
-  >
-
-    Apply Now
-
-  </a>
-
-  <!-- EXPLORE BUTTON -->
-
-  <a
-    href="/gallery/"
-    class="relative z-[999] inline-flex items-center justify-center bg-white/20 backdrop-blur-xl border border-white/40 text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-white hover:text-black hover:scale-110 transition duration-500"
-  >
-
-    Explore Campus
-
-  </a>
-
-</div>
-
-<!-- SCROLL INDICATOR -->
-
-<div class="mt-12 flex flex-col items-center">
-
-  <div class="w-[2px] h-16 bg-white/40 relative overflow-hidden">
-
-    <div class="absolute top-0 left-0 w-full h-8 bg-white scroll-line"></div>
+    </div>
 
   </div>
 
-</div>
-
-</div>
-
 </section>
-<!-- ABOUT -->
+
+<!-- PREMIUM ABOUT PREVIEW -->
 
 <section
   id="about"
-  class="relative py-32 px-6 bg-white overflow-hidden"
+  class="relative py-40 px-6 bg-white overflow-hidden"
 >
 
-  <!-- BACKGROUND GLOW -->
+  <!-- GLOW -->
 
-  <div class="absolute w-[400px] h-[400px] bg-blue-100 blur-[120px] rounded-full top-20 right-0 opacity-50"></div>
+  <div
+    class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100 blur-[140px] rounded-full opacity-60"
+  ></div>
 
-  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center relative z-10">
+  <div
+    class="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-20 items-center"
+  >
 
     <!-- IMAGE -->
 
-    <div class="relative group">
+    <div
+      class="relative"
+    >
 
-      <!-- IMAGE -->
+      <!-- MAIN IMAGE -->
 
-      <div class="overflow-hidden rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
+      <div
+        class="rounded-[40px] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.12)]"
+      >
 
         <img
-          src="{% static 'images/img1.jpeg' %}"
-          class="w-full h-[650px] object-cover group-hover:scale-105 transition duration-700"
+          src="{% static 'images/home.jpeg' %}"
+          class="w-full h-[700px] object-cover hover:scale-105 transition duration-[2000ms]"
         >
 
       </div>
 
       <!-- FLOATING CARD -->
 
-      <div class="absolute -bottom-10 -right-10 bg-white shadow-2xl rounded-3xl p-8 backdrop-blur-xl">
+      <div
+        class="absolute -bottom-10 -right-10 bg-blue-900 text-white p-8 rounded-[30px] shadow-2xl backdrop-blur-xl border border-white/10"
+      >
 
-        <h3 class="text-5xl font-bold text-blue-900">
+        <h3
+          class="text-5xl font-extrabold text-amber-300 mb-2"
+        >
+
           15+
-        </h3>
-
-        <p class="text-slate-600 mt-2">
-          Years Of Excellence
-        </p>
-
-      </div>
-
-    </div>
-
-    <!-- TEXT -->
-
-    <div class="about-content">
-
-      <p class="uppercase tracking-[6px] text-blue-700 font-semibold mb-6">
-
-        About Us
-
-      </p>
-
-      <h2 class="text-5xl md:text-6xl font-bold leading-tight mb-8 text-slate-900">
-
-        A Place Where Students
-        Grow And Shine
-
-      </h2>
-
-      <p class="text-slate-600 text-lg leading-relaxed mb-8">
-
-        Bright Future Academy is committed to nurturing
-        creativity, leadership, innovation, and academic
-        excellence in every student.
-
-      </p>
-
-      <p class="text-slate-600 text-lg leading-relaxed mb-10">
-
-        Our modern learning environment encourages
-        confidence, discipline, teamwork, and personal growth
-        through world-class education and activities.
-
-      </p>
-
-      <!-- FEATURES -->
-
-      <div class="grid grid-cols-2 gap-6">
-
-        <div class="bg-slate-100 p-6 rounded-2xl hover:-translate-y-2 transition duration-300">
-
-          <h3 class="text-3xl font-bold text-blue-900 mb-2">
-            1200+
-          </h3>
-
-          <p class="text-slate-600">
-            Students
-          </p>
-
-        </div>
-
-        <div class="bg-slate-100 p-6 rounded-2xl hover:-translate-y-2 transition duration-300">
-
-          <h3 class="text-3xl font-bold text-blue-900 mb-2">
-            50+
-          </h3>
-
-          <p class="text-slate-600">
-            Expert Teachers
-          </p>
-
-        </div>
-
-        <div class="bg-slate-100 p-6 rounded-2xl hover:-translate-y-2 transition duration-300">
-
-          <h3 class="text-3xl font-bold text-blue-900 mb-2">
-            100%
-          </h3>
-
-          <p class="text-slate-600">
-            Student Support
-          </p>
-
-        </div>
-
-        <div class="bg-slate-100 p-6 rounded-2xl hover:-translate-y-2 transition duration-300">
-
-          <h3 class="text-3xl font-bold text-blue-900 mb-2">
-            25+
-          </h3>
-
-          <p class="text-slate-600">
-            Activities
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-    <!-- FACILITIES -->
-<div class="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
-  <!-- FACILITIES -->
-
-<!-- FACILITIES -->
-
-<section
-  id="facilities"
-  class="py-32 px-6 bg-slate-100 overflow-hidden"
->
-
-  <div class="max-w-7xl mx-auto">
-
-    <!-- TITLE -->
-
-    <div class="text-center mb-20">
-
-      <p class="uppercase tracking-[4px] text-blue-700 font-semibold mb-4">
-        Facilities
-      </p>
-
-      <h2 class="text-5xl text-amber-300 font-bold">
-        Everything Students Need
-      </h2>
-
-    </div>
-
-    <!-- SWIPER -->
-
-    <div class="swiper facilitySwiper">
-
-      <div class="swiper-wrapper">
-
-        <!-- SMART CLASSROOM -->
-
-        <div class="swiper-slide">
-
-          <div class="relative rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.12)] group">
-
-            <img
-              src="{% static 'images/sc.jpeg' %}"
-              class="w-full h-[500px] object-cover group-hover:scale-110 transition duration-700"
-            >
-
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20"></div> 
-
-            <div class="absolute bottom-0 left-0 p-10 text-white">
-
-              <h3 class="text-4xl font-bold mb-4">
-                Smart Classrooms
-              </h3>
-
-              <p class="text-slate-200 text-lg max-w-md">
-                Interactive digital learning with modern teaching technology.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- SPORTS -->
-
-        <div class="swiper-slide">
-
-          <div class="relative rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.12)] group">
-
-            <img
-              src="{% static 'images/sport.jpeg' %}"
-              class="w-full h-[500px] object-cover group-hover:scale-110 transition duration-700"
-            >
-
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20"></div>
-
-            <div class="absolute bottom-0 left-0 p-10 text-white">
-
-              <h3 class="text-4xl font-bold mb-4">
-                Sports Activities
-              </h3>
-
-              <p class="text-slate-200 text-lg max-w-md">
-                Encouraging teamwork, fitness, and leadership through sports.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- SCIENCE LAB -->
-
-        <div class="swiper-slide">
-
-          <div class="relative rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.12)] group">
-
-            <img
-              src="{% static 'images/sl.jpeg' %}"
-              class="w-full h-[500px] object-cover group-hover:scale-110 transition duration-700"
-            >
-
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20"></div>
-
-            <div class="absolute bottom-0 left-0 p-10 text-white">
-
-              <h3 class="text-4xl font-bold mb-4">
-                Science Laboratories
-              </h3>
-
-              <p class="text-slate-200 text-lg max-w-md">
-                Advanced practical learning with modern scientific equipment.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- LIBRARY -->
-
-        <div class="swiper-slide">
-
-          <div class="relative rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.12)] group">
-
-            <img
-              src="{% static 'images/library.jpeg' %}"
-              class="w-full h-[500px] object-cover group-hover:scale-110 transition duration-700"
-            >
-
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20"></div>
-
-            <div class="absolute bottom-0 left-0 p-10 text-white">
-
-              <h3 class="text-4xl font-bold mb-4">
-                Library
-              </h3>
-
-              <p class="text-slate-200 text-lg max-w-md">
-                A peaceful reading environment with thousands of resources.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- COMPUTER LAB -->
-
-        <div class="swiper-slide">
-
-          <div class="relative rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.12)] group">
-
-            <img
-              src="{% static 'images/cl.jpeg' %}"
-              class="w-full h-[500px] object-cover group-hover:scale-110 transition duration-700"
-            >
-
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20"></div>
-
-            <div class="absolute bottom-0 left-0 p-10 text-white">
-
-              <h3 class="text-4xl font-bold mb-4">
-                Computer Lab
-              </h3>
-
-              <p class="text-slate-200 text-lg max-w-md">
-                Modern computer systems with high-speed internet access.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- SCHOOL BUS -->
-
-        <div class="swiper-slide">
-
-          <div class="relative rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.12)] group">
-
-            <img
-              src="{% static 'images/tf.jpeg' %}"
-              class="w-full h-[500px] object-cover group-hover:scale-110 transition duration-700"
-            >
-
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20"></div>
-
-            <div class="absolute bottom-0 left-0 p-10 text-white">
-
-              <h3 class="text-4xl font-bold mb-4">
-                Transport Facility
-              </h3>
-
-              <p class="text-slate-200 text-lg max-w-md">
-                Safe and reliable transportation for students across the city.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- AUDITORIUM -->
-
-        <div class="swiper-slide">
-
-          <div class="relative rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.12)] group">
-
-            <img
-              src="{% static 'images/auditorium.jpeg' %}"
-              class="w-full h-[500px] object-cover group-hover:scale-110 transition duration-700"
-            >
-
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20"></div>
-
-            <div class="absolute bottom-0 left-0 p-10 text-white">
-
-              <h3 class="text-4xl font-bold mb-4">
-                Auditorium
-              </h3>
-
-              <p class="text-slate-200 text-lg max-w-md">
-                Hosting cultural events, seminars, and student activities.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- PLAYGROUND -->
-
-        <div class="swiper-slide">
-
-          <div class="relative rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.12)] group">
-
-            <img
-              src="{% static 'images/pg.jpeg' %}"
-              class="w-full h-[500px] object-cover group-hover:scale-110 transition duration-700"
-            >
-
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20"></div>
-
-            <div class="absolute bottom-0 left-0 p-10 text-white">
-
-              <h3 class="text-4xl font-bold mb-4">
-                Playground
-              </h3>
-
-              <p class="text-slate-200 text-lg max-w-md">
-                Spacious outdoor playground for recreation and sports.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- BUTTONS -->
-
-      <div class="flex justify-center gap-6 mt-12">
-
-        <button class="facility-prev bg-blue-900 text-white w-14 h-14 rounded-full text-2xl hover:scale-110 transition duration-300">
-          ←
-        </button>
-
-        <button class="facility-next bg-blue-900 text-white w-14 h-14 rounded-full text-2xl hover:scale-110 transition duration-300">
-          →
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- MISSION & VISION -->
-<div class="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
-
-<!-- MISSION & VISION -->
-
-<section
-  id="mission"
-  class="relative py-32 px-6 bg-white overflow-hidden"
->
-
-  <!-- BACKGROUND GLOW -->
-
-  <div class="absolute top-20 left-0 w-[400px] h-[400px] bg-blue-100 blur-[120px] rounded-full opacity-50"></div>
-
-  <div class="max-w-7xl mx-auto relative z-10">
-
-    <!-- TITLE -->
-
-    <div class="text-center mb-24">
-
-      <p class="uppercase tracking-[6px] text-blue-700 font-semibold mb-4">
-
-        OUR FOUNDATION
-
-      </p>
-
-      <h2 class="text-5xl md:text-6xl font-bold text-slate-900">
-
-        Mission, Vision & Values
-
-      </h2>
-
-    </div>
-
-    <!-- CARDS -->
-
-    <div class="grid lg:grid-cols-3 gap-8">
-
-      <!-- MISSION -->
-
-      <div
-        class="bg-white border border-slate-200 rounded-[40px] p-10 shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:-translate-y-3 transition duration-500"
-      >
-
-        <div
-          class="w-20 h-20 rounded-3xl bg-blue-900 text-white flex items-center justify-center text-4xl mb-8"
-        >
-          🎯
-        </div>
-
-        <h3 class="text-4xl font-bold mb-6 text-slate-900">
-
-          Mission
 
         </h3>
-
-        <p class="text-slate-600 text-lg leading-relaxed">
-
-          To provide high-quality education that inspires
-          creativity, innovation, leadership, and lifelong learning.
-
-        </p>
-
-      </div>
-
-      <!-- VISION -->
-
-      <div
-        class="bg-blue-900 rounded-[40px] p-10 shadow-[0_20px_60px_rgba(30,58,138,0.35)] hover:-translate-y-3 transition duration-500"
-      >
-
-        <div
-          class="w-20 h-20 rounded-3xl bg-yellow-400 text-black flex items-center justify-center text-4xl mb-8"
-        >
-          👁️
-        </div>
-
-        <h3 class="text-4xl font-bold mb-6 text-white">
-
-          Vision
-
-        </h3>
-
-        <p class="text-slate-100 text-lg leading-relaxed">
-
-          To empower future generations through modern education,
-          discipline, and global values.
-
-        </p>
-
-      </div>
-
-      <!-- VALUES -->
-
-      <div
-        class="bg-white border border-slate-200 rounded-[40px] p-10 shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:-translate-y-3 transition duration-500"
-      >
-
-        <div
-          class="w-20 h-20 rounded-3xl bg-yellow-400 text-black flex items-center justify-center text-4xl mb-8"
-        >
-          ⭐
-        </div>
-
-        <h3 class="text-4xl font-bold mb-6 text-slate-900">
-
-          Core Values
-
-        </h3>
-
-        <p class="text-slate-600 text-lg leading-relaxed">
-
-          Integrity, innovation, teamwork, discipline,
-          and compassion guide our educational journey.
-
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ACHIEVEMENTS -->
-
-<!-- ACHIEVEMENTS -->
-
-<!-- ACHIEVEMENTS -->
-
-<section
-  id="achievements"
-  class="relative py-40 px-6 bg-slate-950 overflow-hidden"
->
-
-  <!-- BACKGROUND GLOW -->
-
-  <div
-    class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-blue-500/20 blur-[150px] rounded-full"
-  ></div>
-
-  <!-- STICKY CONTAINER -->
-
-  <div class="sticky top-24">
-
-    <div class="max-w-7xl mx-auto relative z-10">
-
-      <!-- TITLE -->
-
-      <div class="text-center mb-24">
 
         <p
-          class="uppercase tracking-[8px] text-amber-300 font-semibold mb-6 drop-shadow-[0_0_12px_rgba(251,191,36,0.8)]"
+          class="text-lg text-slate-200"
         >
 
-          OUR ACHIEVEMENTS
+          Years Of Excellence
 
         </p>
 
-        <h2
-          class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight"
-        >
-
-          Inspiring Excellence Every Day
-
-        </h2>
-
       </div>
 
-      <!-- CARDS -->
+    </div>
 
-      <div class="flex flex-wrap justify-center items-center gap-6">
+    <!-- CONTENT -->
+
+    <div>
+
+      <p
+        class="uppercase tracking-[8px] text-blue-700 font-semibold mb-6"
+      >
+
+        About Our School
+
+      </p>
+
+      <h2
+        class="text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-10"
+      >
+
+        Inspiring Students
+        To Achieve Excellence
+
+      </h2>
+
+      <p
+        class="text-slate-600 text-xl leading-relaxed mb-8"
+      >
+
+        Bright Future Academy is committed to providing
+        world-class education through innovation,
+        creativity, leadership, and holistic development.
+
+      </p>
+
+      <p
+        class="text-slate-600 text-xl leading-relaxed mb-12"
+      >
+
+        Our mission is to nurture confident learners,
+        future leaders, and responsible citizens
+        prepared for tomorrow’s world.
+
+      </p>
+
+
+
+<!-- PREMIUM FEATURE CARDS -->
+
+      <div
+        class="grid sm:grid-cols-2 gap-6 mb-14"
+      >
 
         <!-- CARD 1 -->
 
         <div
-          class="achievement-card w-[250px] h-[220px] bg-white/10 backdrop-blur-xl border border-white/10 hover:border-amber-300/30 rounded-[35px] p-10 text-center flex flex-col justify-center hover:scale-[1.03] hover:bg-white/15 transition-all duration-300 ease-out shadow-[0_10px_40px_rgba(0,0,0,0.25)] will-change-transform"
+          class="group bg-white border border-slate-200 rounded-[28px] p-8 shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(30,58,138,0.12)] transition duration-500"
         >
 
-          <h3
-            class="text-6xl font-extrabold text-amber-300 mb-4"
+          <div
+            class="w-14 h-14 rounded-2xl bg-blue-900 mb-6 flex items-center justify-center"
           >
 
-            1200+
+            <div
+              class="w-6 h-6 rounded-full border-2 border-white"
+            ></div>
+
+          </div>
+
+          <h3
+            class="text-2xl font-bold text-slate-900 mb-4"
+          >
+
+            Academic Excellence
 
           </h3>
 
-          <p class="text-slate-300 text-2xl">
+          <p
+            class="text-slate-600 leading-relaxed"
+          >
 
-            Students
+            Delivering innovative learning experiences
+            focused on academic growth and future success.
 
           </p>
 
@@ -1295,20 +338,33 @@ class="absolute inset-0 w-full h-full object-cover scale-110 hero-bg z-0"
         <!-- CARD 2 -->
 
         <div
-          class="achievement-card w-[250px] h-[220px] bg-white/10 backdrop-blur-xl border border-white/10 hover:border-amber-300/30 rounded-[35px] p-10 text-center flex flex-col justify-center hover:scale-[1.03] hover:bg-white/15 transition-all duration-300 ease-out shadow-[0_10px_40px_rgba(0,0,0,0.25)] will-change-transform"
+          class="group bg-white border border-slate-200 rounded-[28px] p-8 shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(30,58,138,0.12)] transition duration-500"
         >
 
-          <h3
-            class="text-6xl font-extrabold text-amber-300 mb-4"
+          <div
+            class="w-14 h-14 rounded-2xl bg-blue-900 mb-6 flex items-center justify-center"
           >
 
-            50+
+            <div
+              class="w-6 h-6 border-2 border-white rotate-45"
+            ></div>
+
+          </div>
+
+          <h3
+            class="text-2xl font-bold text-slate-900 mb-4"
+          >
+
+            Leadership Training
 
           </h3>
 
-          <p class="text-slate-300 text-2xl">
+          <p
+            class="text-slate-600 leading-relaxed"
+          >
 
-            Expert Teachers
+            Encouraging confidence, communication,
+            teamwork, and responsible leadership skills.
 
           </p>
 
@@ -1317,20 +373,33 @@ class="absolute inset-0 w-full h-full object-cover scale-110 hero-bg z-0"
         <!-- CARD 3 -->
 
         <div
-          class="achievement-card w-[250px] h-[220px] bg-white/10 backdrop-blur-xl border border-white/10 hover:border-amber-300/30 rounded-[35px] p-10 text-center flex flex-col justify-center hover:scale-[1.03] hover:bg-white/15 transition-all duration-300 ease-out shadow-[0_10px_40px_rgba(0,0,0,0.25)] will-change-transform"
+          class="group bg-white border border-slate-200 rounded-[28px] p-8 shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(30,58,138,0.12)] transition duration-500"
         >
 
-          <h3
-            class="text-6xl font-extrabold text-amber-300 mb-4"
+          <div
+            class="w-14 h-14 rounded-2xl bg-blue-900 mb-6 flex items-center justify-center"
           >
 
-            25+
+            <div
+              class="w-6 h-6 border-2 border-white rounded-md"
+            ></div>
+
+          </div>
+
+          <h3
+            class="text-2xl font-bold text-slate-900 mb-4"
+          >
+
+            Smart Learning
 
           </h3>
 
-          <p class="text-slate-300 text-2xl">
+          <p
+            class="text-slate-600 leading-relaxed"
+          >
 
-            Awards Won
+            Modern classrooms and technology-driven
+            education designed for future-ready students.
 
           </p>
 
@@ -1339,20 +408,33 @@ class="absolute inset-0 w-full h-full object-cover scale-110 hero-bg z-0"
         <!-- CARD 4 -->
 
         <div
-          class="achievement-card w-[250px] h-[220px] bg-white/10 backdrop-blur-xl border border-white/10 hover:border-amber-300/30 rounded-[35px] p-10 text-center flex flex-col justify-center hover:scale-[1.03] hover:bg-white/15 transition-all duration-300 ease-out shadow-[0_10px_40px_rgba(0,0,0,0.25)] will-change-transform"
+          class="group bg-white border border-slate-200 rounded-[28px] p-8 shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(30,58,138,0.12)] transition duration-500"
         >
 
-          <h3
-            class="text-6xl font-extrabold text-amber-300 mb-4"
+          <div
+            class="w-14 h-14 rounded-2xl bg-blue-900 mb-6 flex items-center justify-center"
           >
 
-            100%
+            <div
+              class="w-6 h-6 border-2 border-white rounded-full"
+            ></div>
+
+          </div>
+
+          <h3
+            class="text-2xl font-bold text-slate-900 mb-4"
+          >
+
+            Holistic Development
 
           </h3>
 
-          <p class="text-slate-300 text-2xl">
+          <p
+            class="text-slate-600 leading-relaxed"
+          >
 
-            Success Rate
+            Supporting creativity, sports,
+            discipline, and overall student wellbeing.
 
           </p>
 
@@ -1360,206 +442,158 @@ class="absolute inset-0 w-full h-full object-cover scale-110 hero-bg z-0"
 
       </div>
 
+      <!-- BUTTON -->
+
+      <a
+        href="/about/"
+        class="inline-flex items-center gap-3 bg-blue-900 text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-black transition duration-500"
+      >
+
+        Learn More
+
+        <span>
+          →
+        </span>
+
+      </a>
+
     </div>
 
   </div>
 
 </section>
-
-<!-- TESTIMONIALS -->
+<!-- PREMIUM STATS -->
 
 <section
-  id="testimonials"
-  class="relative py-32 px-6 bg-white overflow-hidden"
+  id="stats"
+  class="relative py-32 px-6 bg-slate-950 overflow-hidden"
 >
 
   <!-- BACKGROUND GLOW -->
 
   <div
-    class="absolute top-20 right-0 w-[500px] h-[500px] bg-yellow-100 blur-[140px] rounded-full opacity-60"
+    class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-blue-500/20 blur-[150px] rounded-full"
   ></div>
 
   <div class="max-w-7xl mx-auto relative z-10">
 
     <!-- TITLE -->
 
-    <div class="text-center mb-24">
+    <div class="text-center mb-20">
 
       <p
-        class="uppercase tracking-[8px] text-blue-700 font-semibold mb-6"
+        class="uppercase tracking-[8px] text-amber-300 font-semibold mb-6"
       >
 
-        Testimonials
+        Our Excellence
 
       </p>
 
       <h2
-        class="text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight"
+        class="text-5xl md:text-6xl font-extrabold text-white"
       >
 
-        What Parents & Students Say
+        Inspiring Future Leaders
 
       </h2>
 
     </div>
 
-    <!-- TESTIMONIALS -->
+    <!-- STATS GRID -->
 
-    <div class="flex flex-wrap justify-center gap-8">
+    <div
+      class="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+    >
 
       <!-- CARD 1 -->
 
       <div
-        class="w-[350px] bg-white border border-slate-200 rounded-[35px] p-10 shadow-[0_10px_40px_rgba(0,0,0,0.08)] hover:scale-[1.03] transition-all duration-300"
+        class="stat-card bg-white/10 backdrop-blur-xl border border-white/10 rounded-[35px] p-10 text-center hover:scale-105 transition duration-500"
       >
 
-        <!-- STARS -->
+        <h3
+          class="counter text-6xl font-extrabold text-amber-300 mb-4"
+          data-target="15"
+        >
 
-        <div class="flex gap-1 text-yellow-400 text-2xl mb-6">
+          0
 
-          ★ ★ ★ ★ ★
+        </h3>
 
-        </div>
+        <p class="text-slate-300 text-xl">
 
-        <!-- TEXT -->
-
-        <p class="text-slate-600 text-lg leading-relaxed mb-8">
-
-          The teachers are incredibly supportive and the learning
-          environment has helped my child grow with confidence.
+          Years Excellence
 
         </p>
-
-        <!-- PROFILE -->
-
-        <div class="flex items-center gap-4">
-
-          <img
-            src="{% static 'images/parent1.jpg' %}"
-            class="w-16 h-16 rounded-full object-cover"
-          >
-
-          <div>
-
-            <h3 class="font-bold text-xl text-slate-900">
-
-              Priya Sharma
-
-            </h3>
-
-            <p class="text-slate-500">
-
-              Parent
-
-            </p>
-
-          </div>
-
-        </div>
 
       </div>
 
       <!-- CARD 2 -->
 
       <div
-        class="w-[350px] bg-blue-900 text-white rounded-[35px] p-10 shadow-[0_10px_40px_rgba(30,58,138,0.25)] hover:scale-[1.03] transition-all duration-300"
+        class="stat-card bg-white/10 backdrop-blur-xl border border-white/10 rounded-[35px] p-10 text-center hover:scale-105 transition duration-500"
       >
 
-        <!-- STARS -->
+        <h3
+          class="counter text-6xl font-extrabold text-amber-300 mb-4"
+          data-target="5000"
+        >
 
-        <div class="flex gap-1 text-yellow-400 text-2xl mb-6">
+          0
 
-          ★ ★ ★ ★ ★
+        </h3>
 
-        </div>
+        <p class="text-slate-300 text-xl">
 
-        <!-- TEXT -->
-
-        <p class="text-slate-200 text-lg leading-relaxed mb-8">
-
-          The facilities and extracurricular activities are amazing.
-          I enjoy learning and participating every day.
+          Students
 
         </p>
-
-        <!-- PROFILE -->
-
-        <div class="flex items-center gap-4">
-
-          <img
-            src="{% static 'images/student1.jpg' %}"
-            class="w-16 h-16 rounded-full object-cover"
-          >
-
-          <div>
-
-            <h3 class="font-bold text-xl">
-
-              Ria Fernandez
-
-            </h3>
-
-            <p class="text-slate-300">
-
-              Student
-
-            </p>
-
-          </div>
-
-        </div>
 
       </div>
 
       <!-- CARD 3 -->
 
       <div
-        class="w-[350px] bg-white border border-slate-200 rounded-[35px] p-10 shadow-[0_10px_40px_rgba(0,0,0,0.08)] hover:scale-[1.03] transition-all duration-300"
+        class="stat-card bg-white/10 backdrop-blur-xl border border-white/10 rounded-[35px] p-10 text-center hover:scale-105 transition duration-500"
       >
 
-        <!-- STARS -->
+        <h3
+          class="counter text-6xl font-extrabold text-amber-300 mb-4"
+          data-target="100"
+        >
 
-        <div class="flex gap-1 text-yellow-400 text-2xl mb-6">
+          0
 
-          ★ ★ ★ ★ ★
+        </h3>
 
-        </div>
+        <p class="text-slate-300 text-xl">
 
-        <!-- TEXT -->
-
-        <p class="text-slate-600 text-lg leading-relaxed mb-8">
-
-          A wonderful institution that balances academics,
-          discipline, creativity, and personal development.
+          Faculty Members
 
         </p>
 
-        <!-- PROFILE -->
+      </div>
 
-        <div class="flex items-center gap-4">
+      <!-- CARD 4 -->
 
-          <img
-            src="{% static 'images/parent2.jpg' %}"
-            class="w-16 h-16 rounded-full object-cover"
-          >
+      <div
+        class="stat-card bg-white/10 backdrop-blur-xl border border-white/10 rounded-[35px] p-10 text-center hover:scale-105 transition duration-500"
+      >
 
-          <div>
+        <h3
+          class="counter text-6xl font-extrabold text-amber-300 mb-4"
+          data-target="98"
+        >
 
-            <h3 class="font-bold text-xl text-slate-900">
+          0
 
-              Ariyana
+        </h3>
 
-            </h3>
+        <p class="text-slate-300 text-xl">
 
-            <p class="text-slate-500">
+          Success Rate
 
-              Parent
-
-            </p>
-
-          </div>
-
-        </div>
+        </p>
 
       </div>
 
@@ -1568,411 +602,123 @@ class="absolute inset-0 w-full h-full object-cover scale-110 hero-bg z-0"
   </div>
 
 </section>
-
-<!-- PREMIUM CINEMATIC GALLERY -->
+<!-- FACILITIES PREVIEW -->
 
 <section
-  id="gallery"
-  class="relative py-40 px-6 bg-slate-950 overflow-hidden"
+  class="relative py-32 px-6 bg-white overflow-hidden"
 >
-
-  <!-- GLOW -->
-
-  <div
-    class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-blue-500/20 blur-[180px] rounded-full"
-  ></div>
 
   <div class="max-w-7xl mx-auto relative z-10">
 
     <!-- TITLE -->
 
-    <div class="text-center mb-24">
+    <div class="text-center mb-20">
 
       <p
-        class="uppercase tracking-[8px] text-amber-300 font-semibold mb-6"
+        class="uppercase tracking-[8px] text-blue-700 font-semibold mb-6"
       >
 
-        CAMPUS GALLERY
+        Campus Experience
 
       </p>
 
       <h2
-        class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white"
+        class="text-5xl md:text-6xl font-extrabold text-slate-900"
       >
 
-        Explore Our Beautiful Campus
+        Explore Our Modern Campus
 
       </h2>
 
     </div>
 
-    <!-- SWIPER -->
+    <!-- IMAGE GRID -->
 
-    <div class="swiper gallerySwiper">
+    <div
+      class="grid md:grid-cols-3 gap-6"
+    >
 
-      <div class="swiper-wrapper">
-
-        <!-- SLIDE 1 -->
-
-        <div class="swiper-slide">
-
-          <div
-            class="gallery-card relative overflow-hidden rounded-[40px] h-[650px] group"
-          >
-
-            <img
-              src="{% static 'images/gallery1.jpg' %}"
-              class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
-            >
-
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
-            ></div>
-
-            <div
-              class="absolute bottom-0 left-0 p-10"
-            >
-
-              <h3 class="text-5xl font-bold text-white mb-4">
-
-                Smart Classrooms
-
-              </h3>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- SLIDE 2 -->
-
-        <div class="swiper-slide">
-
-          <div
-            class="gallery-card relative overflow-hidden rounded-[40px] h-[650px] group"
-          >
-
-            <img
-              src="{% static 'images/gallery2.jpg' %}"
-              class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
-            >
-
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
-            ></div>
-
-            <div
-              class="absolute bottom-0 left-0 p-10"
-            >
-
-              <h3 class="text-5xl font-bold text-white mb-4">
-
-                Sports Arena
-
-              </h3>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- SLIDE 3 -->
-
-        <div class="swiper-slide">
-
-          <div
-            class="gallery-card relative overflow-hidden rounded-[40px] h-[650px] group"
-          >
-
-            <img
-              src="{% static 'images/gallery3.jpg' %}"
-              class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
-            >
-
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
-            ></div>
-
-            <div
-              class="absolute bottom-0 left-0 p-10"
-            >
-
-              <h3 class="text-5xl font-bold text-white mb-4">
-
-                Innovative Activities
-
-              </h3>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- SLIDE 4 -->
-
-        <div class="swiper-slide">
-
-          <div
-            class="gallery-card relative overflow-hidden rounded-[40px] h-[650px] group"
-          >
-
-            <img
-              src="{% static 'images/gallery4.jpg' %}"
-              class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
-            >
-
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
-            ></div>
-
-            <div
-              class="absolute bottom-0 left-0 p-10"
-            >
-
-              <h3 class="text-5xl font-bold text-white mb-4">
-
-                Student Activities
-
-              </h3>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- SLIDE 5 -->
-
-        <div class="swiper-slide">
-
-          <div
-            class="gallery-card relative overflow-hidden rounded-[40px] h-[650px] group"
-          >
-
-            <img
-              src="{% static 'images/gallery5.jpg' %}"
-              class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
-            >
-
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
-            ></div>
-
-            <div
-              class="absolute bottom-0 left-0 p-10"
-            >
-
-              <h3 class="text-5xl font-bold text-white mb-4">
-
-                Library
-
-              </h3>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- SLIDE 6 -->
-
-        <div class="swiper-slide">
-
-          <div
-            class="gallery-card relative overflow-hidden rounded-[40px] h-[650px] group"
-          >
-
-            <img
-              src="{% static 'images/gallery6.jpg' %}"
-              class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
-            >
-
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
-            ></div>
-
-            <div
-              class="absolute bottom-0 left-0 p-10"
-            >
-
-              <h3 class="text-5xl font-bold text-white mb-4">
-
-                Creative Learning
-
-              </h3>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- BUTTONS -->
-
-      <div class="flex justify-center gap-6 mt-14">
-
-        <button
-          class="gallery-prev w-16 h-16 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white text-2xl hover:scale-110 transition"
-        >
-
-          ←
-
-        </button>
-
-        <button
-          class="gallery-next w-16 h-16 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white text-2xl hover:scale-110 transition"
-        >
-
-          →
-
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- PRINCIPAL MESSAGE -->
-
-<section
-  id="principal"
-  class="relative py-40 px-6 bg-white overflow-hidden"
->
-
-  <!-- BACKGROUND GLOW -->
-
-  <div
-    class="absolute top-20 right-0 w-[500px] h-[500px] bg-blue-100 blur-[140px] rounded-full opacity-60"
-  ></div>
-
-  <div
-    class="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-20 items-center"
-  >
-
-    <!-- IMAGE SIDE -->
-
-    <div class="relative group">
-
-      <!-- IMAGE -->
-
-      <div
-        class="overflow-hidden rounded-[40px] shadow-[0_20px_80px_rgba(0,0,0,0.15)]"
-      >
+      <div class="relative rounded-[35px] overflow-hidden group h-[500px]">
 
         <img
-          src="{% static 'images/principal.jpg' %}"
-          class="w-full h-[750px] object-cover group-hover:scale-105 transition duration-[1200ms]"
+          src="{% static 'images/sc.jpeg' %}"
+          class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
         >
+
+        <div class="absolute inset-0 bg-black/40"></div>
+
+        <div class="absolute bottom-0 left-0 p-8">
+
+          <h3 class="text-3xl font-bold text-white">
+
+            Smart Classrooms
+
+          </h3>
+
+        </div>
 
       </div>
 
-      <!-- FLOATING CARD -->
+      <div class="relative rounded-[35px] overflow-hidden group h-[500px]">
 
-      <div
-        class="absolute -bottom-10 -right-10 bg-white shadow-2xl rounded-[30px] p-8 backdrop-blur-xl border border-slate-200"
-      >
+        <img
+          src="{% static 'images/sl.jpeg' %}"
+          class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
+        >
 
-        <p class="text-slate-500 mb-2">
+        <div class="absolute inset-0 bg-black/40"></div>
 
-          Principal
+        <div class="absolute bottom-0 left-0 p-8">
 
-        </p>
+          <h3 class="text-3xl font-bold text-white">
 
-        <h3 class="text-3xl font-bold text-slate-900">
+            Science Labs
 
-          Dr. Mark Williams
+          </h3>
 
-        </h3>
+        </div>
+
+      </div>
+
+      <div class="relative rounded-[35px] overflow-hidden group h-[500px]">
+
+        <img
+          src="{% static 'images/sport.jpeg' %}"
+          class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
+        >
+
+        <div class="absolute inset-0 bg-black/40"></div>
+
+        <div class="absolute bottom-0 left-0 p-8">
+
+          <h3 class="text-3xl font-bold text-white">
+
+            Sports Arena
+
+          </h3>
+
+        </div>
 
       </div>
 
     </div>
 
-    <!-- CONTENT SIDE -->
+    <!-- BUTTON -->
 
-    <div>
+    <div class="text-center mt-14">
 
-      <!-- SMALL TITLE -->
-
-      <p
-        class="uppercase tracking-[8px] text-amber-300 font-semibold mb-6"
+      <a
+        href="/facilities/"
+        class="inline-flex items-center gap-3 bg-blue-900 text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-black transition duration-500"
       >
 
-        Principal’s Message
+        Explore Facilities
 
-      </p>
+        <span>
+          →
+        </span>
 
-      <!-- TITLE -->
-
-      <h2
-        class="text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-10"
-      >
-
-        Guiding Students
-        Towards A Brighter Future
-
-      </h2>
-
-      <!-- MESSAGE -->
-
-      <p
-        class="text-slate-600 text-xl leading-relaxed mb-8"
-      >
-
-        At Bright Future Academy, we believe education
-        is not just about academic excellence, but also
-        about shaping character, creativity, and leadership.
-
-      </p>
-
-      <p
-        class="text-slate-600 text-xl leading-relaxed mb-8"
-      >
-
-        Our mission is to empower every student with
-        confidence, discipline, innovation, and values
-        that prepare them for a successful future.
-
-      </p>
-
-      <p
-        class="text-slate-600 text-xl leading-relaxed mb-12"
-      >
-
-        Together with our dedicated teachers and supportive
-        community, we strive to create an inspiring
-        environment where students can truly thrive.
-
-      </p>
-
-      <!-- SIGNATURE -->
-
-      <div>
-
-        <h3
-          class="text-3xl font-bold text-slate-900 mb-2"
-        >
-
-          Dr. Mark Williams
-
-        </h3>
-
-        <p class="text-slate-500 text-lg">
-
-          Principal, Bright Future Academy
-
-        </p>
-
-      </div>
+      </a>
 
     </div>
 
@@ -1981,10 +727,10 @@ class="absolute inset-0 w-full h-full object-cover scale-110 hero-bg z-0"
 </section>
 
 
-<!-- FAQ SECTION -->
+<!-- PREMIUM GALLERY PREVIEW -->
 
 <section
-  id="faq"
+  id="gallery-preview"
   class="relative py-40 px-6 bg-slate-950 overflow-hidden"
 >
 
@@ -1994,7 +740,7 @@ class="absolute inset-0 w-full h-full object-cover scale-110 hero-bg z-0"
     class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-blue-500/20 blur-[160px] rounded-full"
   ></div>
 
-  <div class="max-w-5xl mx-auto relative z-10">
+  <div class="max-w-7xl mx-auto relative z-10">
 
     <!-- TITLE -->
 
@@ -2004,7 +750,7 @@ class="absolute inset-0 w-full h-full object-cover scale-110 hero-bg z-0"
         class="uppercase tracking-[8px] text-amber-300 font-semibold mb-6"
       >
 
-        FAQ
+        Campus Moments
 
       </p>
 
@@ -2012,182 +758,145 @@ class="absolute inset-0 w-full h-full object-cover scale-110 hero-bg z-0"
         class="text-5xl md:text-6xl font-extrabold text-white"
       >
 
-        Frequently Asked Questions
+        Experience Life At Our Campus
 
       </h2>
 
     </div>
 
-    <!-- FAQ ITEMS -->
+    <!-- MASONRY GRID -->
 
-    <div class="space-y-6">
+    <div
+      class="grid md:grid-cols-4 gap-6 auto-rows-[250px]"
+    >
 
-      <!-- ITEM 1 -->
+      <!-- IMAGE 1 -->
 
       <div
-        class="faq-item bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] overflow-hidden"
+        class="group relative overflow-hidden rounded-[35px] md:col-span-2 md:row-span-2"
       >
 
-        <!-- QUESTION -->
-
-        <button
-          class="faq-question w-full flex justify-between items-center text-left px-8 py-7 text-white text-2xl font-semibold hover:bg-white/5 transition"
+        <img
+          src="{% static 'images/gallery1.jpg' %}"
+          class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
         >
-
-          <span>
-
-            What curriculum does the school follow?
-
-          </span>
-
-          <span class="faq-icon text-3xl">
-
-            +
-
-          </span>
-
-        </button>
-
-        <!-- ANSWER -->
 
         <div
-          class="faq-answer max-h-0 overflow-hidden transition-all duration-500"
-        >
-
-          <div class="px-8 pb-8 text-slate-300 text-lg leading-relaxed">
-
-            We follow a modern academic curriculum focused on
-            excellence, innovation, leadership, and holistic development.
-
-          </div>
-
-        </div>
+          class="absolute inset-0 bg-black/30"
+        ></div>
 
       </div>
 
-      <!-- ITEM 2 -->
+      <!-- IMAGE 2 -->
 
       <div
-        class="faq-item bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] overflow-hidden"
+        class="group relative overflow-hidden rounded-[35px]"
       >
 
-        <button
-          class="faq-question w-full flex justify-between items-center text-left px-8 py-7 text-white text-2xl font-semibold hover:bg-white/5 transition"
+        <img
+          src="{% static 'images/gallery2.jpg' %}"
+          class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
         >
-
-          <span>
-
-            Are transport facilities available?
-
-          </span>
-
-          <span class="faq-icon text-3xl">
-
-            +
-
-          </span>
-
-        </button>
 
         <div
-          class="faq-answer max-h-0 overflow-hidden transition-all duration-500"
-        >
-
-          <div class="px-8 pb-8 text-slate-300 text-lg leading-relaxed">
-
-            Yes, we provide safe and reliable transport facilities
-            across multiple routes within the city.
-
-          </div>
-
-        </div>
+          class="absolute inset-0 bg-black/30"
+        ></div>
 
       </div>
 
-      <!-- ITEM 3 -->
+      <!-- IMAGE 3 -->
 
       <div
-        class="faq-item bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] overflow-hidden"
+        class="group relative overflow-hidden rounded-[35px]"
       >
 
-        <button
-          class="faq-question w-full flex justify-between items-center text-left px-8 py-7 text-white text-2xl font-semibold hover:bg-white/5 transition"
+        <img
+          src="{% static 'images/gallery3.jpg' %}"
+          class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
         >
-
-          <span>
-
-            How can parents apply for admission?
-
-          </span>
-
-          <span class="faq-icon text-3xl">
-
-            +
-
-          </span>
-
-        </button>
 
         <div
-          class="faq-answer max-h-0 overflow-hidden transition-all duration-500"
-        >
-
-          <div class="px-8 pb-8 text-slate-300 text-lg leading-relaxed">
-
-            Parents can apply online through the admission form
-            or contact the school office directly for guidance.
-
-          </div>
-
-        </div>
+          class="absolute inset-0 bg-black/30"
+        ></div>
 
       </div>
 
-      <!-- ITEM 4 -->
+      <!-- IMAGE 4 -->
 
       <div
-        class="faq-item bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] overflow-hidden"
+        class="group relative overflow-hidden rounded-[35px]"
       >
 
-        <button
-          class="faq-question w-full flex justify-between items-center text-left px-8 py-7 text-white text-2xl font-semibold hover:bg-white/5 transition"
+        <img
+          src="{% static 'images/gallery4.jpg' %}"
+          class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
         >
-
-          <span>
-
-            Does the school provide extracurricular activities?
-
-          </span>
-
-          <span class="faq-icon text-3xl">
-
-            +
-
-          </span>
-
-        </button>
 
         <div
-          class="faq-answer max-h-0 overflow-hidden transition-all duration-500"
-        >
-
-          <div class="px-8 pb-8 text-slate-300 text-lg leading-relaxed">
-
-            Yes, students can participate in sports, arts,
-            music, dance, clubs, leadership programs,
-            and cultural events.
-
-          </div>
-
-        </div>
+          class="absolute inset-0 bg-black/30"
+        ></div>
 
       </div>
+
+      <!-- IMAGE 5 -->
+
+      <div
+        class="group relative overflow-hidden rounded-[35px] md:col-span-2"
+      >
+
+        <img
+          src="{% static 'images/gallery5.jpg' %}"
+          class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
+        >
+
+        <div
+          class="absolute inset-0 bg-black/30"
+        ></div>
+
+      </div>
+
+      <!-- IMAGE 6 -->
+
+      <div
+        class="group relative overflow-hidden rounded-[35px]"
+      >
+
+        <img
+          src="{% static 'images/gallery6.jpg' %}"
+          class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
+        >
+
+        <div
+          class="absolute inset-0 bg-black/30"
+        ></div>
+
+      </div>
+
+    </div>
+
+    <!-- BUTTON -->
+
+    <div class="text-center mt-16">
+
+      <a
+        href="/gallery/"
+        class="inline-flex items-center gap-3 bg-white text-black px-10 py-5 rounded-2xl text-lg font-bold hover:bg-amber-300 transition duration-500"
+      >
+
+        Explore Full Gallery
+
+        <span>
+          →
+        </span>
+
+      </a>
 
     </div>
 
   </div>
 
 </section>
+
 
 <!-- ADMISSION CTA -->
 
@@ -2196,48 +905,22 @@ class="absolute inset-0 w-full h-full object-cover scale-110 hero-bg z-0"
   class="relative py-40 px-6 overflow-hidden bg-gradient-to-br from-blue-950 via-slate-950 to-black"
 >
 
-  <!-- GLOW BLOBS -->
+  <div class="max-w-6xl mx-auto relative z-10 text-center">
 
-  <div
-    class="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/20 blur-[140px] rounded-full animate-pulse"
-  ></div>
-
-  <div
-    class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-amber-300/20 blur-[140px] rounded-full animate-pulse"
-  ></div>
-
-  <!-- CONTENT -->
-
-  <div
-    class="max-w-6xl mx-auto relative z-10 text-center"
-  >
-
-    <!-- SMALL TITLE -->
-
-    <p
-      class="uppercase tracking-[10px] text-amber-300 font-semibold mb-8"
-    >
+    <p class="uppercase tracking-[10px] text-amber-300 font-semibold mb-8">
 
       Admissions Open 2026
 
     </p>
 
-    <!-- MAIN TITLE -->
-
-    <h2
-      class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight mb-10"
-    >
+    <h2 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-10">
 
       Shape Your Child’s
       Future With Us
 
     </h2>
 
-    <!-- DESCRIPTION -->
-
-    <p
-      class="text-slate-300 text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto mb-14"
-    >
+    <p class="text-slate-300 text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto mb-14">
 
       Join a community focused on excellence,
       innovation, leadership, creativity,
@@ -2245,240 +928,25 @@ class="absolute inset-0 w-full h-full object-cover scale-110 hero-bg z-0"
 
     </p>
 
-    <!-- BUTTONS -->
+    <div class="flex flex-col sm:flex-row justify-center gap-6">
 
-    <div
-      class="flex flex-col sm:flex-row justify-center gap-6"
-    >
+      <a
+        href="/admission/"
+        class="bg-yellow-400 text-black px-10 py-5 rounded-2xl font-bold text-lg hover:scale-105 transition duration-500"
+      >
 
-      <!-- APPLY -->
+        Apply Now
 
+      </a>
 
-        <a
-            href="/admission#admission-form"
-            class="group relative overflow-hidden bg-yellow-400 text-black px-10 py-5 rounded-2xl font-bold text-lg shadow-[0_10px_40px_rgba(251,191,36,0.5)] hover:scale-105 transition duration-500"
-            >
-
-          <span class="relative z-10">
-            Apply Now
-          </span>
-
-          <div
-            class="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition duration-500"
-          ></div>
-
-        </a>
-
-
-      <!-- CONTACT -->
-
-      <button
-        href="/contact#contact"
+      <a
+        href="/contact/"
         class="border border-white/20 bg-white/10 backdrop-blur-xl text-white px-12 py-6 rounded-[24px] text-xl font-semibold hover:bg-white hover:text-black transition duration-500"
       >
 
-        Contact us
-
-      </button>
-
-    </div>
-
-    <!-- MOVING TEXT -->
-
-    <div
-      class="mt-24 overflow-hidden"
-    >
-
-      <div
-        class="marquee whitespace-nowrap text-[80px] md:text-[120px] font-extrabold text-white/5 uppercase"
-      >
-
-        Excellence • Leadership • Innovation • Creativity • Success • Excellence • Leadership • Innovation •
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- CONTACT -->
-<div class="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
-<!-- CONTACT -->
-
-<section
-  id="contact"
-  class="relative py-32 px-6 bg-gradient-to-b from-white to-slate-100 overflow-hidden"
->
-
-  <!-- BACKGROUND GLOW -->
-
-  <div class="absolute w-[500px] h-[500px] bg-blue-200 blur-[120px] rounded-full -bottom-20 -left-20 opacity-50"></div>
-
-  <div class="max-w-7xl mx-auto relative z-10">
-
-    <!-- TITLE -->
-
-    <div class="text-center mb-20">
-
-      <p class="uppercase tracking-[6px] text-blue-700 font-semibold mb-4">
-
         Contact Us
 
-      </p>
-
-      <h2 class="text-5xl md:text-6xl font-bold text-slate-900">
-
-        Let’s Build The Future Together
-
-      </h2>
-
-    </div>
-
-    <!-- CONTACT GRID -->
-
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
-
-      <!-- LEFT SIDE -->
-
-      <div class="space-y-8">
-
-        <!-- CARD -->
-
-        <div class="bg-white/80 backdrop-blur-xl border border-white/20 p-8 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition duration-500">
-
-          <div class="flex items-start gap-5">
-
-            <div class="w-16 h-16 rounded-2xl bg-blue-900 text-white flex items-center justify-center text-2xl">
-
-              📍
-
-            </div>
-
-            <div>
-
-              <h3 class="text-2xl font-bold mb-2">
-                Address
-              </h3>
-
-              <p class="text-slate-600 text-lg">
-                Coimbatore, Tamil Nadu
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- PHONE -->
-
-        <div class="bg-white/80 backdrop-blur-xl border border-white/20 p-8 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition duration-500">
-
-          <div class="flex items-start gap-5">
-
-            <div class="w-16 h-16 rounded-2xl bg-yellow-400 text-black flex items-center justify-center text-2xl">
-
-              ☎️
-
-            </div>
-
-            <div>
-
-              <h3 class="text-2xl font-bold mb-2">
-                Phone Number
-              </h3>
-
-              <p class="text-slate-600 text-lg">
-                +91 98765 43210
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- EMAIL -->
-
-        <div class="bg-white/80 backdrop-blur-xl border border-white/20 p-8 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition duration-500">
-
-          <div class="flex items-start gap-5">
-
-            <div class="w-16 h-16 rounded-2xl bg-blue-500 text-white flex items-center justify-center text-2xl">
-
-              ✉️
-
-            </div>
-
-            <div>
-
-              <h3 class="text-2xl font-bold mb-2">
-                Email Address
-              </h3>
-
-              <p class="text-slate-600 text-lg">
-                info@brightfutureacademy.com
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- RIGHT SIDE -->
-
-      <div class="bg-white/80 backdrop-blur-xl border border-white/20 p-10 rounded-[40px] shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
-
-        <h3 class="text-4xl font-bold mb-8 text-slate-900">
-
-          Send Us A Message
-
-        </h3>
-
-        <form class="space-y-6">
-
-          <!-- NAME -->
-
-          <input
-            type="text"
-            placeholder="Your Name"
-            class="w-full p-5 rounded-2xl border border-slate-200 bg-white outline-none focus:border-blue-700 transition"
-          >
-
-          <!-- EMAIL -->
-
-          <input
-            type="email"
-            placeholder="Your Email"
-            class="w-full p-5 rounded-2xl border border-slate-200 bg-white outline-none focus:border-blue-700 transition"
-          >
-
-          <!-- MESSAGE -->
-
-          <textarea
-            rows="6"
-            placeholder="Your Message"
-            class="w-full p-5 rounded-2xl border border-slate-200 bg-white outline-none focus:border-blue-700 transition resize-none"
-          ></textarea>
-
-          <!-- BUTTON -->
-
-          <button
-            class="w-full bg-blue-900 text-white py-5 rounded-2xl font-bold text-lg hover:bg-blue-800 hover:scale-[1.02] transition duration-500 shadow-xl"
-          >
-
-            Send Message
-
-          </button>
-
-        </form>
-
-      </div>
+      </a>
 
     </div>
 
@@ -2486,303 +954,142 @@ class="absolute inset-0 w-full h-full object-cover scale-110 hero-bg z-0"
 
 </section>
 
+{% endblock %}
 
+{% block extra_js %}
 
-<!-- FOOTER -->
+<script>
 
-<footer
-  class="relative bg-black text-white overflow-hidden pt-32 pb-10 px-6"
->
+  // HERO GSAP ANIMATION
 
-  <!-- BACKGROUND GLOW -->
+  gsap.from(".hero-subtitle",{
 
-  <div
-    class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-blue-500/20 blur-[160px] rounded-full"
-  ></div>
+    y:40,
+    opacity:0,
+    duration:1,
+    delay:0.3
 
-  <div class="max-w-7xl mx-auto relative z-10">
+  });
 
-    <!-- TOP SECTION -->
+  gsap.from(".hero-title",{
 
-    <div class="grid lg:grid-cols-4 gap-16 mb-20">
+    y:80,
+    opacity:0,
+    duration:1.4,
+    delay:0.6,
+    ease:"power4.out"
 
-      <!-- BRAND -->
+  });
 
-      <div>
+  gsap.from(".hero-text",{
 
-        <h2
-          class="text-4xl font-extrabold mb-6 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent"
-        >
+    y:40,
+    opacity:0,
+    duration:1.2,
+    delay:1
 
-          Bright Future Academy
+  });
 
-        </h2>
+  gsap.from(".hero-buttons",{
 
-        <p
-          class="text-slate-400 text-lg leading-relaxed mb-8"
-        >
+    y:40,
+    opacity:0,
+    duration:1,
+    delay:1.4
 
-          Inspiring excellence through innovation,
-          leadership, creativity, and world-class education.
+  });
 
-        </p>
+  // FLOATING HERO EFFECT
 
-        <!-- SOCIALS -->
+  gsap.to(".hero-title",{
 
-        <div class="flex gap-4">
+    y:15,
+    duration:3,
+    repeat:-1,
+    yoyo:true,
+    ease:"sine.inOut"
 
-          <!-- FACEBOOK -->
+  });
 
-          <div
-            class="w-14 h-14 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center text-xl hover:scale-110 hover:bg-blue-600 transition duration-300 cursor-pointer"
-          >
+  // ABOUT REVEAL
 
-            f
+gsap.from("#about img",{
 
-          </div>
-          <a href="https://facebook.com" target="_blank"></a>
-          <!-- INSTAGRAM -->
+  scrollTrigger:{
+    trigger:"#about",
+    start:"top 75%"
+  },
 
-          <div
-            class="w-14 h-14 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center text-xl hover:scale-110 hover:bg-pink-500 transition duration-300 cursor-pointer"
-          >
+  x:-100,
+  opacity:0,
+  duration:1.4,
+  ease:"power4.out"
 
-            ◎
+});
 
-          </div>
-            <a href="https://instagram.com" target="_blank"></a>
-          <!-- YOUTUBE -->
+gsap.from("#about h2, #about p, #about .grid, #about a",{
 
-          <div
-            class="w-14 h-14 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center text-xl hover:scale-110 hover:bg-red-500 transition duration-300 cursor-pointer"
-          >
+  scrollTrigger:{
+    trigger:"#about",
+    start:"top 75%"
+  },
 
-            ▶
+  x:100,
+  opacity:0,
+  duration:1.2,
+  stagger:0.15,
+  ease:"power4.out"
 
-          </div>
-            <a href="https://youtube.com" target="_blank"></a>
-        </div>
+});
 
-      </div>
+// COUNTER ANIMATION
 
-      <!-- QUICK LINKS -->
+const counters = document.querySelectorAll('.counter');
 
-      <div>
+counters.forEach(counter => {
 
-        <h3
-          class="text-2xl font-bold mb-8 text-white"
-        >
+  const updateCounter = () => {
 
-          Quick Links
+    const target = +counter.getAttribute('data-target');
 
-        </h3>
+    const current = +counter.innerText;
 
-        <div class="flex flex-col gap-5 text-slate-400 text-lg">
+    const increment = target / 100;
 
-          <a
-            href="#home"
-            class="hover:text-amber-300 transition duration-300"
-          >
+    if(current < target){
 
-            Home
+      counter.innerText = Math.ceil(current + increment);
 
-          </a>
+      setTimeout(updateCounter, 20);
 
-          <a
-            href="#about"
-            class="hover:text-amber-300 transition duration-300"
-          >
+    }else{
 
-            About
+      counter.innerText = target + '+';
 
-          </a>
+    }
 
-          <a
-            href="#facilities"
-            class="hover:text-amber-300 transition duration-300"
-          >
+  };
 
-            Facilities
+  updateCounter();
 
-          </a>
+});
 
-          <a
-            href="#gallery"
-            class="hover:text-amber-300 transition duration-300"
-          >
+// GALLERY REVEAL
 
-            Gallery
+gsap.from("#gallery-preview .group",{
 
-          </a>
+  scrollTrigger:{
+    trigger:"#gallery-preview",
+    start:"top 75%"
+  },
 
-          <a
-            href="#contact"
-            class="hover:text-amber-300 transition duration-300"
-          >
+  y:100,
+  opacity:0,
+  duration:1.2,
+  stagger:0.15
 
-            Contact
+});
 
-          </a>
+</script>
 
-        </div>
-
-      </div>
-
-      <!-- FACILITIES -->
-
-      <div>
-
-        <h3
-          class="text-2xl font-bold mb-8 text-white"
-        >
-
-          Facilities
-
-        </h3>
-
-        <div class="flex flex-col gap-5 text-slate-400 text-lg">
-
-          <p>Smart Classrooms</p>
-
-          <p>Science Laboratories</p>
-
-          <p>Sports Complex</p>
-
-          <p>Library</p>
-
-          <p>Computer Labs</p>
-
-        </div>
-
-      </div>
-
-      <!-- CONTACT -->
-
-      <div>
-
-        <h3
-          class="text-2xl font-bold mb-8 text-white"
-        >
-
-          Contact Info
-
-        </h3>
-
-        <div class="flex flex-col gap-6 text-slate-400 text-lg">
-
-          <div class="flex items-start gap-4">
-
-            <span class="text-amber-300 text-2xl">
-
-              📍
-
-            </span>
-
-            <p>
-
-              Coimbatore, Tamil Nadu
-
-            </p>
-
-          </div>
-
-          <div class="flex items-start gap-4">
-
-            <span class="text-amber-300 text-2xl">
-
-              ☎️
-
-            </span>
-
-            <p>
-
-              +91 98765 43210
-
-            </p>
-
-          </div>
-
-          <div class="flex items-start gap-4">
-
-            <span class="text-amber-300 text-2xl">
-
-              ✉️
-
-            </span>
-
-            <p>
-
-              info@brightfutureacademy.com
-
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- DIVIDER -->
-
-    <div
-      class="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-10"
-    ></div>
-
-    <!-- BOTTOM -->
-
-    <div
-      class="flex flex-col md:flex-row justify-between items-center gap-6"
-    >
-
-      <p class="text-slate-500 text-lg">
-
-        © 2026 Bright Future Academy. All Rights Reserved.
-
-      </p>
-
-      <div class="flex gap-8 text-slate-500 text-lg">
-
-        <a
-          href="#"
-          class="hover:text-amber-300 transition duration-300"
-        >
-
-          Privacy Policy
-
-        </a>
-
-        <a
-          href="#"
-          class="hover:text-amber-300 transition duration-300"
-        >
-
-          Terms & Conditions
-
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</footer>
-<a
-href="https://wa.me/917550011210"
-target="_blank"
-class="fixed bottom-6 right-6 z-50 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition"
->
-
-📞
-
-</a>
-
-<div
-id="page-transition"
-class="fixed inset-0 bg-black z-[99998] pointer-events-none scale-y-0 origin-bottom"
-></div>
-</body>
-
-</html>
+{% endblock %}

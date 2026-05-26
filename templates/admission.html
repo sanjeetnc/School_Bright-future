@@ -1,191 +1,437 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block title %}
+Admissions
+{% endblock %}
 
-<head>
+{% block content %}
 
-<meta charset="UTF-8">
+<!-- HERO SECTION -->
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<section
+  class="relative h-[85vh] flex items-center justify-center overflow-hidden"
+>
 
-<title>Admissions - Bright Future Academy</title>
+  <!-- VIDEO -->
 
-<!-- GOOGLE FONT -->
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    class="absolute inset-0 w-full h-full object-cover"
+  >
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    <source
+      src="{% static 'videos/campus_copy.mp4' %}"
+      type="video/mp4"
+    >
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  </video>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- OVERLAY -->
 
-<!-- TAILWIND -->
+  <div
+    class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"
+  ></div>
 
-<script src="https://cdn.tailwindcss.com"></script>
+  <!-- GLOW -->
 
-<!-- GSAP -->
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-amber-300/20 blur-[180px] rounded-full"
+  ></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- CONTENT -->
 
-<style>
+  <div
+    class="relative z-10 text-center px-6 max-w-5xl"
+  >
 
-body{
-  font-family:'Inter',sans-serif;
-  background:#020617;
-  overflow-x:hidden;
-}
-
-/* GLOW BLOBS */
-
-.blob{
-  position:fixed;
-  border-radius:9999px;
-  filter:blur(120px);
-  opacity:0.2;
-  pointer-events:none;
-}
-
-.blob1{
-  width:400px;
-  height:400px;
-  background:#3b82f6;
-  top:-100px;
-  left:-100px;
-}
-
-.blob2{
-  width:400px;
-  height:400px;
-  background:#facc15;
-  bottom:-100px;
-  right:-100px;
-}
-
-/* INPUTS */
-
-input,
-textarea,
-select{
-  transition:0.4s;
-}
-
-input:focus,
-textarea:focus,
-select:focus{
-  outline:none;
-  border-color:#facc15;
-  transform:translateY(-2px);
-}
-
-/* BUTTON */
-
-.submit-btn:hover{
-  transform:translateY(-4px) scale(1.02);
-}
-
-@keyframes popup{
-
-  from{
-    opacity:0;
-    transform:scale(0.7);
-  }
-
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
-
-}
-</style>
-
-</head>
-
-<body class="text-white">
-
-<!-- BLOBS -->
-
-<div class="blob blob1"></div>
-<div class="blob blob2"></div>
-
-<!-- HERO -->
-
-<section class="min-h-screen flex items-center justify-center px-6 py-24">
-
-<div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
-
-  <!-- LEFT CONTENT -->
-
-  <div class="admission-text">
-
-    <p class="uppercase tracking-[8px] text-amber-300 font-semibold mb-6">
+    <p
+      class="uppercase tracking-[10px] text-amber-300 font-semibold mb-8 admission-subtitle"
+    >
 
       Admissions Open 2026
 
     </p>
 
-    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-8">
+    <h1
+      class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight mb-10 admission-title"
+    >
 
-      Start Your Child’s Bright Future
+      Begin Your
+      Journey With Excellence
 
     </h1>
 
-    <p class="text-slate-300 text-xl leading-relaxed mb-10">
+    <p
+      class="text-lg md:text-2xl text-slate-200 leading-relaxed max-w-4xl mx-auto admission-text"
+    >
 
-      Join Bright Future Academy and provide your child with
-      world-class education, innovation, leadership, creativity,
-      and holistic development.
+      Discover a future-focused learning environment
+      designed to inspire innovation,
+      leadership, creativity, and success.
 
     </p>
 
-    <!-- FEATURES -->
+  </div>
 
-    <div class="space-y-6">
+</section>
 
-      <div class="flex items-center gap-4">
+<!-- ADMISSION PROCESS -->
 
-        <div class="w-12 h-12 rounded-2xl bg-blue-900 flex items-center justify-center text-xl">
+<section
+  class="relative py-40 px-6 bg-white overflow-hidden"
+>
+<!-- ADMISSION PROCESS CARDS -->
 
-          ☞
+<div class="mt-20">
 
-        </div>
+  <!-- ROW 1 -->
 
-        <p class="text-lg text-slate-300">
+  <div class="grid md:grid-cols-2 gap-8 mb-8">
 
-          Expert Faculty & Smart Classrooms
+    <!-- CARD 1 -->
 
-        </p>
+    <div
+      class="bg-white border border-slate-200 rounded-[40px] p-10 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:-translate-y-3 transition duration-500"
+    >
 
-      </div>
+      <!-- NUMBER -->
 
-      <div class="flex items-center gap-4">
+      <div
+        class="w-20 h-20 rounded-full bg-gradient-to-r from-blue-900 to-indigo-900 text-white flex items-center justify-center text-3xl font-bold mb-8"
+      >
 
-        <div class="w-12 h-12 rounded-2xl bg-amber-300 text-black flex items-center justify-center text-xl">
-
-          ★
-
-        </div>
-
-        <p class="text-lg text-slate-300">
-
-          Award Winning Academic Excellence
-
-        </p>
+        01
 
       </div>
 
-      <div class="flex items-center gap-4">
+      <!-- TITLE -->
 
-        <div class="w-12 h-12 rounded-2xl bg-blue-500 flex items-center justify-center text-xl">
+      <h3
+        class="text-3xl font-bold text-slate-900 mb-6"
+      >
 
-          ◉
+        Submit Inquiry
+
+      </h3>
+
+      <!-- TEXT -->
+
+      <p
+        class="text-slate-600 text-lg leading-relaxed"
+      >
+
+        Reach out through our admissions office
+        or contact form for guidance
+        and enrollment support.
+
+      </p>
+
+    </div>
+
+    <!-- CARD 2 -->
+
+    <div
+      class="bg-gradient-to-br from-blue-900 to-indigo-900 rounded-[40px] p-10 shadow-[0_20px_60px_rgba(30,58,138,0.18)] hover:-translate-y-3 transition duration-500"
+    >
+
+      <!-- NUMBER -->
+
+      <div
+        class="w-20 h-20 rounded-full bg-white/20 text-white flex items-center justify-center text-3xl font-bold mb-8"
+      >
+
+        02
+
+      </div>
+
+      <!-- TITLE -->
+
+      <h3
+        class="text-3xl font-bold text-white mb-6"
+      >
+
+        Campus Visit
+
+      </h3>
+
+      <!-- TEXT -->
+
+      <p
+        class="text-slate-200 text-lg leading-relaxed"
+      >
+
+        Explore our vibrant campus,
+        classrooms,
+        laboratories,
+        and student facilities.
+
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- ROW 2 -->
+
+  <div class="grid md:grid-cols-2 gap-8">
+
+    <!-- CARD 3 -->
+
+    <div
+      class="bg-white border border-slate-200 rounded-[40px] p-10 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:-translate-y-3 transition duration-500"
+    >
+
+      <!-- NUMBER -->
+
+      <div
+        class="w-20 h-20 rounded-full bg-gradient-to-r from-blue-900 to-indigo-900 text-white flex items-center justify-center text-3xl font-bold mb-8"
+      >
+
+        03
+
+      </div>
+
+      <!-- TITLE -->
+
+      <h3
+        class="text-3xl font-bold text-slate-900 mb-6"
+      >
+
+        Application Review
+
+      </h3>
+
+      <!-- TEXT -->
+
+      <p
+        class="text-slate-600 text-lg leading-relaxed"
+      >
+
+        Our admissions team carefully reviews
+        academic records
+        and student applications.
+
+      </p>
+
+    </div>
+
+    <!-- CARD 4 -->
+
+    <div
+      class="bg-white border border-slate-200 rounded-[40px] p-10 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:-translate-y-3 transition duration-500"
+    >
+
+      <!-- NUMBER -->
+
+      <div
+        class="w-20 h-20 rounded-full bg-gradient-to-r from-blue-900 to-indigo-900 text-white flex items-center justify-center text-3xl font-bold mb-8"
+      >
+
+        04
+
+      </div>
+
+      <!-- TITLE -->
+
+      <h3
+        class="text-3xl font-bold text-slate-900 mb-6"
+      >
+
+        Enrollment
+
+      </h3>
+
+      <!-- TEXT -->
+
+      <p
+        class="text-slate-600 text-lg leading-relaxed"
+      >
+
+        Complete enrollment formalities
+        and begin your educational journey
+        with our institution.
+
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+</section>
+
+<!-- WHY CHOOSE US -->
+
+<section
+  class="relative py-40 px-6 bg-slate-950 overflow-hidden"
+>
+
+  <!-- GLOW -->
+
+  <div
+    class="absolute top-0 left-0 w-[700px] h-[700px] bg-blue-500/20 blur-[180px] rounded-full"
+  ></div>
+
+  <div
+    class="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-20 items-center"
+  >
+
+    <!-- IMAGE -->
+
+    <div
+      class="relative"
+    >
+
+      <div
+        class="rounded-[45px] overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.25)]"
+      >
+
+        <img
+          src="{% static 'images/student1.jpg' %}"
+          class="w-full h-[750px] object-cover hover:scale-105 transition duration-[2000ms]"
+        >
+
+      </div>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div>
+
+      <p
+        class="uppercase tracking-[8px] text-amber-300 font-semibold mb-6"
+      >
+
+        Why Choose Us
+
+      </p>
+
+      <h2
+        class="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-10"
+      >
+
+        Empowering Students
+        Beyond Academics
+
+      </h2>
+
+      <p
+        class="text-slate-300 text-xl leading-relaxed mb-12 max-w-2xl"
+      >
+
+        Our institution provides a holistic environment
+        focused on academic excellence,
+        leadership, innovation,
+        creativity, and personal growth.
+
+      </p>
+
+      <!-- FEATURES -->
+
+      <div
+        class="grid sm:grid-cols-2 gap-6"
+      >
+
+        <!-- CARD -->
+
+        <div
+          class="bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] p-8 hover:-translate-y-2 transition duration-500"
+        >
+
+          <h3
+            class="text-2xl font-bold text-white mb-4"
+          >
+
+            Smart Learning
+
+          </h3>
+
+          <p
+            class="text-slate-300"
+          >
+
+            Technology-enabled modern classrooms.
+
+          </p>
 
         </div>
 
-        <p class="text-lg text-slate-300">
+        <!-- CARD -->
 
-          Modern Global Learning Environment
+        <div
+          class="bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] p-8 hover:-translate-y-2 transition duration-500"
+        >
 
-        </p>
+          <h3
+            class="text-2xl font-bold text-white mb-4"
+          >
+
+            Leadership
+
+          </h3>
+
+          <p
+            class="text-slate-300"
+          >
+
+            Confidence-building and teamwork skills.
+
+          </p>
+
+        </div>
+
+        <!-- CARD -->
+
+        <div
+          class="bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] p-8 hover:-translate-y-2 transition duration-500"
+        >
+
+          <h3
+            class="text-2xl font-bold text-white mb-4"
+          >
+
+            Sports & Arts
+
+          </h3>
+
+          <p
+            class="text-slate-300"
+          >
+
+            Balanced development through activities.
+
+          </p>
+
+        </div>
+
+        <!-- CARD -->
+
+        <div
+          class="bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] p-8 hover:-translate-y-2 transition duration-500"
+        >
+
+          <h3
+            class="text-2xl font-bold text-white mb-4"
+          >
+
+            Future Ready
+
+          </h3>
+
+          <p
+            class="text-slate-300"
+          >
+
+            Preparing students for global opportunities.
+
+          </p>
+
+        </div>
 
       </div>
 
@@ -193,214 +439,652 @@ select:focus{
 
   </div>
 
-  <!-- FORM -->
+</section>
+
+<!-- STATS SECTION -->
+
+<section
+  class="relative py-32 px-6 bg-gradient-to-r from-blue-900 to-indigo-900 overflow-hidden"
+>
+
+  <!-- GLOW -->
 
   <div
-  class="admission-form bg-white/10 backdrop-blur-2xl border border-white/10 rounded-[40px] p-10 shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-amber-300/20 blur-[180px] rounded-full"
+  ></div>
+
+  <div
+    class="max-w-7xl mx-auto relative z-10 grid md:grid-cols-4 gap-10 text-center"
   >
 
-    <h2 class="text-4xl font-bold mb-10">
+    <!-- STAT -->
 
-      Admission Form
+    <div>
 
-    </h2>
-
-    <form method="POST" class="space-y-6" id="admissionForm">
-      {% csrf_token %}
-      <!-- NAME -->
-
-      <input
-      type="text"
-      name="student_name"
-      placeholder="Student Name"
-      required
-      class="w-full p-5 rounded-2xl bg-white/10 border border-white/10 text-white"
+      <h3
+        class="counter text-6xl font-extrabold text-white mb-4"
+        data-target="15"
       >
 
-      <!-- EMAIL -->
+        0
 
-      <input
-      type="email"
-      name="email"
-      placeholder="Parent Email"
-      required
-      class="w-full p-5 rounded-2xl bg-white/10 border border-white/10 text-white"
+      </h3>
+
+      <p
+        class="text-slate-200 text-xl"
       >
 
-      <!-- PHONE -->
+        Years Excellence
 
-      <input
-      type="tel"
-      name="phone"
-      placeholder="Phone Number"
-      required
-      class="w-full p-5 rounded-2xl bg-white/10 border border-white/10 text-white"
+      </p>
+
+    </div>
+
+    <!-- STAT -->
+
+    <div>
+
+      <h3
+        class="counter text-6xl font-extrabold text-white mb-4"
+        data-target="5000"
       >
 
-      <!-- GRADE -->
+        0
 
-      <select
-      name="grade"
-      class="w-full p-5 rounded-2xl bg-white/10 border border-white/10 text-white"
+      </h3>
+
+      <p
+        class="text-slate-200 text-xl"
       >
 
-        <option class="text-black">Grade 1</option>
-        <option class="text-black">Grade 2</option>
-        <option class="text-black">Grade 3</option>
-        <option class="text-black">Grade 4</option>
-        <option class="text-black">Grade 5</option>
-        <option class="text-black">Grade 6</option>
-        <option class="text-black">Grade 7</option>
-        <option class="text-black">Grade 8</option>
-        <option class="text-black">Grade 9</option>
-        <option class="text-black">Grade 10</option>
-        <option class="text-black">Grade 11</option>
-        <option class="text-black">Grade 12</option>
+        Students
 
-      </select>
+      </p>
 
-      <!-- MESSAGE -->
+    </div>
 
-      <textarea
-      name="message"
-      rows="5"
-      placeholder="Additional Message"
-      class="w-full p-5 rounded-2xl bg-white/10 border border-white/10 text-white resize-none"
-      ></textarea>
+    <!-- STAT -->
 
-      <!-- BUTTON -->
+    <div>
 
-    <button
-    type="submit"
-    class="bg-amber-300 text-black px-10 py-4 rounded-2xl font-bold hover:scale-105 transition duration-500"
-    >
+      <h3
+        class="counter text-6xl font-extrabold text-white mb-4"
+        data-target="100"
+      >
 
-    Submit Admission
+        0
 
-    </button>
+      </h3>
 
-    </form>
+      <p
+        class="text-slate-200 text-xl"
+      >
+
+        Faculty Members
+
+      </p>
+
+    </div>
+
+    <!-- STAT -->
+
+    <div>
+
+      <h3
+        class="counter text-6xl font-extrabold text-white mb-4"
+        data-target="98"
+      >
+
+        0
+
+      </h3>
+
+      <p
+        class="text-slate-200 text-xl"
+      >
+
+        Success Rate
+
+      </p>
+
+    </div>
 
   </div>
 
-</div>
-
 </section>
 
-<!-- GSAP -->
+<!-- CTA -->
+
+<section
+  class="relative py-40 px-6 bg-white overflow-hidden"
+>
+
+  <!-- GLOW -->
+
+  <div
+    class="absolute top-0 right-0 w-[700px] h-[700px] bg-blue-100 blur-[180px] rounded-full opacity-60"
+  ></div>
+
+  <div
+    class="max-w-5xl mx-auto relative z-10 text-center"
+  >
+
+    <p
+      class="uppercase tracking-[8px] text-blue-700 font-semibold mb-6"
+    >
+
+      Start Your Journey
+
+    </p>
+
+    <h2
+      class="text-5xl md:text-7xl font-extrabold text-slate-900 leading-tight mb-10"
+    >
+
+      Admissions Open
+      For 2026
+
+    </h2>
+
+    <p
+      class="text-slate-600 text-xl leading-relaxed mb-14 max-w-3xl mx-auto"
+    >
+
+      Join a vibrant learning environment
+      designed to inspire future innovators,
+      leaders, and achievers.
+
+    </p>
+
+    <!-- BUTTONS -->
+
+    <div
+      class="flex flex-wrap justify-center gap-6"
+    >
+
+      <a
+        href="/contact/"
+        class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:scale-105 transition duration-500"
+      >
+
+        Book Campus Visit
+
+      </a>
+
+      <a
+        href="/gallery/"
+        class="border border-slate-300 text-slate-900 px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-slate-100 transition duration-500"
+      >
+
+        Explore Campus
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- ADMISSION FORM SECTION -->
+
+<section
+  class="relative py-40 px-6 bg-slate-950 overflow-hidden"
+>
+
+  <!-- GLOW -->
+
+  <div
+    class="absolute top-0 left-0 w-[700px] h-[700px] bg-blue-500/20 blur-[180px] rounded-full"
+  ></div>
+
+  <div
+    class="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-20 items-center"
+  >
+
+    <!-- LEFT CONTENT -->
+
+    <div>
+
+      <p
+        class="uppercase tracking-[8px] text-amber-300 font-semibold mb-6"
+      >
+
+        Start Application
+
+      </p>
+
+      <h2
+        class="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-10"
+      >
+
+        Apply For
+        Admission 2026
+
+      </h2>
+
+      <p
+        class="text-slate-300 text-xl leading-relaxed mb-12 max-w-2xl"
+      >
+
+        Begin your child’s journey with a future-focused
+        institution dedicated to academic excellence,
+        innovation, leadership, and holistic development.
+
+      </p>
+
+      <!-- FEATURE LABELS -->
+
+      <div
+        class="grid sm:grid-cols-2 gap-6"
+      >
+
+        <!-- LABEL -->
+
+        <div
+          class="bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] p-8"
+        >
+
+          <h3
+            class="text-2xl font-bold text-white mb-4"
+          >
+
+            Smart Learning
+
+          </h3>
+
+          <p
+            class="text-slate-300"
+          >
+
+            Interactive modern classrooms.
+
+          </p>
+
+        </div>
+
+        <!-- LABEL -->
+
+        <div
+          class="bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] p-8"
+        >
+
+          <h3
+            class="text-2xl font-bold text-white mb-4"
+          >
+
+            Future Ready
+
+          </h3>
+
+          <p
+            class="text-slate-300"
+          >
+
+            Global learning environment.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- IMAGE -->
+
+      <div
+        class="mt-12 rounded-[45px] overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.25)]"
+      >
+
+        <img
+          src="{% static 'images/student1.jpg' %}"
+          class="w-full h-[320px] object-cover hover:scale-105 transition duration-[2000ms]"
+        >
+
+      </div>
+
+    </div>
+
+    <!-- FORM -->
+
+    <div
+      class="relative"
+    >
+
+      <!-- GLASS CARD -->
+
+      <div
+        class="bg-white/10 backdrop-blur-2xl border border-white/10 rounded-[45px] p-10 shadow-[0_20px_80px_rgba(0,0,0,0.25)]"
+      >
+
+        <p
+          class="uppercase tracking-[8px] text-amber-300 font-semibold mb-6"
+        >
+
+          Admission Form
+
+        </p>
+
+        <h2
+          class="text-4xl font-extrabold text-white mb-10"
+        >
+
+          Student Application
+
+        </h2>
+
+        <!-- FORM -->
+        {% if success %}
+
+        <div
+          class="mb-8 bg-green-400/20 border border-green-400/20 text-green-200 px-6 py-5 rounded-2xl text-lg font-semibold"
+        >
+
+          Application submitted successfully.
+
+        </div>
+
+        {% endif %}
+
+        <form
+          method="POST"
+          class="space-y-6"
+        >
+
+          {% csrf_token %}
+
+          <!-- STUDENT NAME -->
+
+          <div>
+
+            <label
+              class="block text-slate-200 text-lg mb-3"
+            >
+
+              Student Name
+
+            </label>
+
+            <input
+              type="text"
+              name="student_name"
+              required
+              placeholder="Enter student name"
+              class="w-full bg-white/10 border border-white/10 rounded-2xl px-6 py-5 text-white placeholder-slate-400 outline-none focus:border-amber-300 transition"
+            >
+
+          </div>
+
+          <!-- PARENT NAME -->
+
+          <div>
+
+            <label
+              class="block text-slate-200 text-lg mb-3"
+            >
+
+              Parent Name
+
+            </label>
+
+            <input
+              type="text"
+              name="parent_name"
+              required
+              placeholder="Enter parent name"
+              class="w-full bg-white/10 border border-white/10 rounded-2xl px-6 py-5 text-white placeholder-slate-400 outline-none focus:border-amber-300 transition"
+            >
+
+          </div>
+
+          <!-- EMAIL -->
+
+          <div>
+
+            <label
+              class="block text-slate-200 text-lg mb-3"
+            >
+
+              Email Address
+
+            </label>
+
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Enter email address"
+              class="w-full bg-white/10 border border-white/10 rounded-2xl px-6 py-5 text-white placeholder-slate-400 outline-none focus:border-amber-300 transition"
+            >
+
+          </div>
+
+          <!-- PHONE -->
+
+          <div>
+
+            <label
+              class="block text-slate-200 text-lg mb-3"
+            >
+
+              Phone Number
+
+            </label>
+
+            <input
+              type="text"
+              name="phone"
+              required
+              placeholder="Enter phone number"
+              class="w-full bg-white/10 border border-white/10 rounded-2xl px-6 py-5 text-white placeholder-slate-400 outline-none focus:border-amber-300 transition"
+            >
+
+          </div>
+
+          <!-- CLASS -->
+
+          <div>
+
+            <label
+              class="block text-slate-200 text-lg mb-3"
+            >
+
+              Applying For Class
+
+            </label>
+
+            <select
+              name="class"
+              required
+              class="w-full bg-white/10 border border-white/10 rounded-2xl px-6 py-5 text-white outline-none focus:border-amber-300 transition"
+            >
+
+              <option value="" class="text-black">
+                Select Class
+              </option>
+
+              <option class="text-black">
+                Kindergarten
+              </option>
+
+              <option class="text-black">
+                Grade 1
+              </option>
+
+              <option class="text-black">
+                Grade 2
+              </option>
+
+              <option class="text-black">
+                Grade 3
+              </option>
+
+              <option class="text-black">
+                Grade 4
+              </option>
+
+              <option class="text-black">
+                Grade 5
+              </option>
+
+              <option class="text-black">
+                Grade 6
+              </option>
+
+              <option class="text-black">
+                Grade 7
+              </option>
+
+              <option class="text-black">
+                Grade 8
+              </option>
+
+              <option class="text-black">
+                Grade 9
+              </option>
+
+              <option class="text-black">
+                Grade 10
+              </option>
+
+              <option class="text-black">
+                Grade 11
+              </option>
+
+              <option class="text-black">
+                Grade 12
+              </option>
+
+            </select>
+
+          </div>
+
+          <!-- MESSAGE -->
+
+          <div>
+
+            <label
+              class="block text-slate-200 text-lg mb-3"
+            >
+
+              Additional Information
+
+            </label>
+
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Tell us more about the student..."
+              class="w-full bg-white/10 border border-white/10 rounded-2xl px-6 py-5 text-white placeholder-slate-400 outline-none focus:border-amber-300 transition resize-none"
+            ></textarea>
+
+          </div>
+
+          <!-- BUTTON -->
+
+          <button
+            type="submit"
+            class="w-full bg-gradient-to-r from-amber-300 to-orange-400 text-slate-900 py-5 rounded-2xl text-lg font-bold hover:scale-[1.02] transition duration-500 shadow-[0_20px_60px_rgba(251,191,36,0.25)]"
+          >
+
+            Submit Application
+
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+{% endblock %}
+
+{% block extra_js %}
 
 <script>
 
-// HERO ANIMATION
+  // HERO
 
-gsap.from(".admission-text", {
+  gsap.from(".admission-subtitle",{
+    y:40,
+    opacity:0,
+    duration:1,
+    delay:0.3
+  });
 
-  x:-80,
-  opacity:0,
-  duration:1.2,
-  ease:"power3.out"
+  gsap.from(".admission-title",{
+    y:80,
+    opacity:0,
+    duration:1.4,
+    delay:0.6,
+    ease:"power4.out"
+  });
 
-});
+  gsap.from(".admission-text",{
+    y:40,
+    opacity:0,
+    duration:1.2,
+    delay:1
+  });
 
-gsap.from(".admission-form", {
+  // CARDS
 
-  x:80,
-  opacity:0,
-  duration:1.2,
-  ease:"power3.out"
+  gsap.from(".admission-card",{
 
-});
+    scrollTrigger:{
+      trigger:".admission-card",
+      start:"top 85%"
+    },
 
-// FLOATING EFFECT
+    y:80,
+    opacity:0,
+    duration:1,
+    stagger:0.15,
+    ease:"power4.out"
 
-gsap.to(".blob1", {
+  });
 
-  y:40,
-  x:30,
-  repeat:-1,
-  yoyo:true,
-  duration:6,
-  ease:"sine.inOut"
+  // COUNTERS
 
-});
+  const counters = document.querySelectorAll('.counter');
 
-gsap.to(".blob2", {
+  counters.forEach(counter => {
 
-  y:-40,
-  x:-30,
-  repeat:-1,
-  yoyo:true,
-  duration:7,
-  ease:"sine.inOut"
+    const updateCounter = () => {
 
-});
+      const target = +counter.getAttribute('data-target');
 
-</script>
-{% if success %}
+      const current = +counter.innerText.replace(/\D/g,'');
 
-<div
-id="successPopup"
-class="fixed inset-0 z-[99999] flex items-center justify-center bg-black/70 backdrop-blur-md"
->
+      const increment = target / 100;
 
-<div
-class="bg-white rounded-[35px] p-10 max-w-md text-center shadow-[0_20px_80px_rgba(0,0,0,0.35)] animate-[popup_0.5s_ease]"
->
+      if(current < target){
 
-<div
-class="w-24 h-24 mx-auto mb-6 rounded-full bg-green-100 flex items-center justify-center text-5xl"
->
+        counter.innerText = Math.ceil(current + increment);
 
-✅
+        requestAnimationFrame(updateCounter);
 
-</div>
+      }else{
 
-<h2 class="text-4xl font-bold text-slate-900 mb-4">
+        if(target === 98){
 
-Application Submitted!
+          counter.innerText = target + '%';
 
-</h2>
+        }else{
 
-<p class="text-slate-600 text-lg leading-relaxed mb-8">
+          counter.innerText = target + '+';
 
-Thank you for applying to Bright Future Academy.
-Our team will contact you soon.
+        }
 
-</p>
+      }
 
-<button
-onclick="closePopup()"
-class="bg-yellow-400 hover:bg-yellow-300 text-black px-8 py-4 rounded-2xl font-bold text-lg transition duration-300"
->
+    };
 
-OK
+    updateCounter();
 
-</button>
-
-</div>
-
-</div>
-
-{% endif %}
-
-
-<script>
-
-function closePopup(){
-
-  const popup = document.getElementById("successPopup");
-
-  popup.style.opacity = "0";
-
-  setTimeout(() => {
-
-    popup.style.display = "none";
-
-  }, 300);
-
-}
+  });
 
 </script>
-</body>
 
-</html>
+{% endblock %}

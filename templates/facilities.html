@@ -1,338 +1,289 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
+{% block title %}
+Facilities
+{% endblock %}
 
-  <meta charset="UTF-8" />
+{% block content %}
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- HERO SECTION -->
 
-  <title>Facilities - Bright Future Academy</title>
-
-  <!-- GOOGLE FONT -->
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- TAILWIND -->
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-
-    body{
-      font-family:'Inter',sans-serif;
-      background:#020617;
-      overflow-x:hidden;
-    }
-
-    .nav-link{
-      position:relative;
-    }
-
-    .nav-link::after{
-      content:'';
-      position:absolute;
-      left:0;
-      bottom:-6px;
-      width:0%;
-      height:2px;
-      background:#facc15;
-      transition:0.4s;
-    }
-
-    .nav-link:hover::after{
-      width:100%;
-    }
-
-    .card-glow:hover{
-    box-shadow:
-    0 0 40px rgba(59,130,246,0.25),
-    0 0 80px rgba(59,130,246,0.15);
-    }
-    ::-webkit-scrollbar{
-    width:10px;
-    }
-
-    ::-webkit-scrollbar-track{
-    background:#020617;
-    }
-
-    ::-webkit-scrollbar-thumb{
-    background:#facc15;
-    border-radius:999px;
-    }
-  </style>
-
-</head>
-
-<body class="text-white">
-
-<!-- NAVBAR -->
-
-<header
-class="fixed top-0 left-0 w-full z-50 bg-[#020617]/80 backdrop-blur-xl border-b border-white/10"
+<section
+  class="relative h-[80vh] flex items-center justify-center overflow-hidden"
 >
 
-<nav class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+  <!-- BACKGROUND IMAGE -->
 
-  <!-- LOGO -->
+    <!-- VIDEO BACKGROUND -->
 
-  <div class="flex items-center gap-3">
+<video
+  autoplay
+  muted
+  loop
+  playsinline
+  class="absolute inset-0 w-full h-full object-cover"
+>
 
-    <div class="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center text-white font-bold text-xl">
+  <source
+    src="{% static 'videos/campus_copy.mp4' %}"
+    type="video/mp4"
+  >
 
-      B
+</video>
+    class="absolute inset-0 w-full h-full object-cover scale-110"
+  >
 
-    </div>
+  <!-- OVERLAY -->
 
-    <div>
+  <div
+    class="absolute inset-0 bg-black/50"
+  ></div>
 
-      <h1 class="text-xl font-bold text-white">
+  <!-- GRADIENT -->
 
-        Bright Future Academy
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-black/10 via-blue-950/20 to-black/70"
+  ></div>
 
-      </h1>
+  <!-- COLOR GLOW -->
 
-      <p class="text-sm text-amber-300 uppercase tracking-[4px] font-semibold">
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-amber-400/20 blur-[180px] rounded-full"
+  ></div>
 
-        Excellence In Education
+  <!-- CONTENT -->
 
-      </p>
+  <div
+    class="relative -left-20 z-10 text-center px-3 max-w-5xl"
+  >
 
-    </div>
+    <p
+      class="uppercase tracking-[10px] text-amber-300 font-semibold mb-8 facilities-subtitle"
+    >
+
+      Premium Campus Experience
+
+    </p>
+
+    <h1
+      class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight mb-10 facilities-title"
+    >
+
+      A Campus Built
+      For Future Leaders
+
+    </h1>
+
+    <p
+      class="text-lg md:text-2xl text-slate-200 leading-relaxed max-w-4xl mx-auto facilities-text"
+    >
+
+      Discover inspiring spaces designed
+      for innovation, creativity,
+      leadership, and holistic education.
+
+    </p>
 
   </div>
 
-  <!-- MENU -->
+</section>
 
-  <div class="hidden md:flex items-center gap-10">
+<!-- FACILITIES GRID -->
 
-    <a href="index.html" class="nav-link text-white hover:text-amber-300">
+<section
+  class="relative py-40 px-6 bg-gradient-to-b from-white to-slate-100 overflow-hidden"
+>
 
-      Home
+  <!-- GLOW -->
 
-    </a>
+  <div
+    class="absolute top-0 right-0 w-[700px] h-[700px] bg-blue-100 blur-[160px] rounded-full opacity-60"
+  ></div>
 
-    <a href="about.html" class="nav-link text-white hover:text-amber-300">
-
-      About
-
-    </a>
-
-    <a href="facilities.html" class="nav-link text-amber-300">
-
-      Facilities
-
-    </a>
-
-    <a href="gallery.html" class="nav-link text-white hover:text-amber-300">
-
-      Gallery
-
-    </a>
-
-    <a href="contact.html" class="nav-link text-white hover:text-amber-300">
-
-      Contact
-
-    </a>
-
-  </div>
-
-</nav>
-
-</header>
-
-<!-- HERO -->
-
-<section class="pt-40 pb-24 px-6">
-
-  <div class="max-w-7xl mx-auto">
+  <div
+    class="max-w-7xl mx-auto relative z-10"
+  >
 
     <!-- TITLE -->
 
-    <div class="text-center mb-20">
+    <div
+      class="text-center mb-24"
+    >
 
-      <p class="uppercase tracking-[6px] text-amber-300 font-semibold mb-4">
+      <p
+        class="uppercase tracking-[8px] text-blue-700 font-semibold mb-6"
+      >
 
-        OUR CAMPUS
+        Explore Our Facilities
 
       </p>
 
-      <h1 class="text-5xl md:text-7xl font-extrabold">
+      <h2
+        class="text-5xl md:text-6xl font-extrabold text-slate-900"
+      >
 
-        Our Facilities
+        Spaces That Inspire Excellence
 
-      </h1>
+      </h2>
 
     </div>
 
     <!-- GRID -->
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div
+      class="grid lg:grid-cols-3 gap-8"
+    >
 
-      <!-- CARD -->
+      <!-- CARD 1 -->
 
-      <div class="bg-white/10 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:-translate-y-3 transition duration-500">
+      <div
+        class="facility-card group"
+      >
 
-        <img
-        src="{% static 'images/sc.jpeg' %}"
-        class="w-full h-64 object-cover"
+        <div
+          class="relative overflow-hidden rounded-[40px] shadow-[0_20px_80px_rgba(0,0,0,0.12)]"
         >
 
-        <div class="p-8">
+          <img
+            src="{% static 'images/library.jpeg' %}"
+            class="w-full h-[650px] object-cover group-hover:scale-110 transition duration-[2000ms]"
+          >
 
-          <h2 class="text-3xl font-bold mb-4">
+          <!-- OVERLAY -->
 
-            Smart Classrooms
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"
+          ></div>
 
-          </h2>
+          <!-- CONTENT -->
 
-          <p class="text-slate-300 leading-relaxed">
+          <div
+            class="absolute bottom-0 left-0 p-10"
+          >
 
-            Interactive digital learning with modern technology.
+            <h3
+              class="text-4xl font-bold text-white mb-4"
+            >
 
-          </p>
+              Digital Library
+
+            </h3>
+
+            <p
+              class="text-slate-200 text-lg leading-relaxed"
+            >
+
+              A peaceful and technology-enabled
+              learning environment encouraging curiosity.
+
+            </p>
+
+          </div>
 
         </div>
 
       </div>
 
-      <!-- CARD -->
+      <!-- CARD 2 -->
 
-      <div class="bg-white/10 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:-translate-y-3 transition duration-500">
+      <div
+        class="facility-card group lg:translate-y-20"
+      >
 
-        <img
-        src="{% static 'images/sl.jpeg' %}"
-        class="w-full h-64 object-cover"
+        <div
+          class="relative overflow-hidden rounded-[40px] shadow-[0_20px_80px_rgba(0,0,0,0.12)]"
         >
 
-        <div class="p-8">
+          <img
+            src="{% static 'images/auditorium.jpeg' %}"
+            class="w-full h-[650px] object-cover group-hover:scale-110 transition duration-[2000ms]"
+          >
 
-          <h2 class="text-3xl font-bold mb-4">
+          <!-- OVERLAY -->
 
-            Science Labs
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"
+          ></div>
 
-          </h2>
+          <!-- CONTENT -->
 
-          <p class="text-slate-300 leading-relaxed">
+          <div
+            class="absolute bottom-0 left-0 p-10"
+          >
 
-            Advanced practical learning facilities for students.
+            <h3
+              class="text-4xl font-bold text-white mb-4"
+            >
 
-          </p>
+              Grand Auditorium
+
+            </h3>
+
+            <p
+              class="text-slate-200 text-lg leading-relaxed"
+            >
+
+              Hosting cultural programs,
+              seminars, celebrations, and student events.
+
+            </p>
+
+          </div>
 
         </div>
 
       </div>
 
-      <!-- CARD -->
+      <!-- CARD 3 -->
 
-      <div class="bg-white/10 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:-translate-y-3 transition duration-500">
+      <div
+        class="facility-card group"
+      >
 
-        <img
-        src="images/library.jpeg"
-        class="w-full h-64 object-cover"
+        <div
+          class="relative overflow-hidden rounded-[40px] shadow-[0_20px_80px_rgba(0,0,0,0.12)]"
         >
 
-        <div class="p-8">
+          <img
+            src="{% static 'images/sport.jpeg' %}"
+            class="w-full h-[650px] object-cover group-hover:scale-110 transition duration-[2000ms]"
+          >
 
-          <h2 class="text-3xl font-bold mb-4">
+          <!-- OVERLAY -->
 
-            Library
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"
+          ></div>
 
-          </h2>
+          <!-- CONTENT -->
 
-          <p class="text-slate-300 leading-relaxed">
+          <div
+            class="absolute bottom-0 left-0 p-10"
+          >
 
-            Thousands of books and digital resources.
+            <h3
+              class="text-4xl font-bold text-white mb-4"
+            >
 
-          </p>
+              Sports Arena
+
+            </h3>
+
+            <p
+              class="text-slate-200 text-lg leading-relaxed"
+            >
+
+              Encouraging fitness, teamwork,
+              discipline, and leadership development.
+
+            </p>
+
+          </div>
 
         </div>
 
       </div>
-
-      <!-- CARD -->
-            <div class="bg-white/10 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:-translate-y-3 transition duration-500">
-
-        <img
-        src="{% static 'images/sport.jpeg' %}"
-        class="w-full h-64 object-cover"
-        >
-
-        <div class="p-8">
-
-          <h2 class="text-3xl font-bold mb-4">
-
-            Sport Facilities
-
-          </h2>
-
-          <p class="text-slate-300 leading-relaxed">
-
-            Our world-class sports facilities inspire teamwork, discipline, and excellence in every student.
-
-          </p>
-
-        </div>
-
-      </div>
-      <!-- CARD -->
-            <div class="bg-white/10 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:-translate-y-3 transition duration-500">
-
-        <img
-        src="{% static 'images/cl.jpeg' %}"
-        class="w-full h-64 object-cover"
-        >
-
-        <div class="p-8">
-
-          <h2 class="text-3xl font-bold mb-4">
-
-            Computer Labs
-
-          </h2>
-
-          <p class="text-slate-300 leading-relaxed">
-
-            Our advanced computer labs provide students with hands-on learning and modern digital skills.
-
-          </p>
-
-        </div>
-
-      </div>
-      <!-- CARD -->
-            <div class="bg-white/10 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:-translate-y-3 transition duration-500">
-
-        <img
-        src="{% static 'images/auditorium.jpeg' %}"
-        class="w-full h-64 object-cover"
-        >
-
-        <div class="p-8">
-
-          <h2 class="text-3xl font-bold mb-4">
-
-            Auditorium
-
-          </h2>
-
-          <p class="text-slate-300 leading-relaxed">
-
-            Our spacious auditorium hosts cultural events, seminars, and performances that nurture student talent and creativity.
-
-          </p>
-
-        </div>
-
-      </div>
-
 
     </div>
 
@@ -340,14 +291,433 @@ class="fixed top-0 left-0 w-full z-50 bg-[#020617]/80 backdrop-blur-xl border-b 
 
 </section>
 
-<!-- FOOTER -->
+<!-- PARALLAX SECTION -->
 
-<footer class="border-t border-white/10 py-10 text-center text-slate-400">
+<section
+  class="relative h-[90vh] overflow-hidden"
+>
 
-  © 2026 Bright Future Academy. All Rights Reserved.
+  <!-- IMAGE -->
 
-</footer>
+  <img
+    src="{% static 'images/pg.jpeg' %}"
+    class="absolute inset-0 w-full h-full object-cover scale-110"
+  >
 
-</body>
+  <!-- OVERLAY -->
 
-</html>
+  <div
+    class="absolute inset-0 bg-black/60"
+  ></div>
+
+  <!-- CONTENT -->
+
+  <div
+    class="relative z-10 h-full flex items-center justify-center text-center px-6"
+  >
+
+    <div>
+
+      <p
+        class="uppercase tracking-[8px] text-amber-300 font-semibold mb-8"
+      >
+
+        Inspiring Environment
+
+      </p>
+
+      <h2
+        class="text-5xl md:text-7xl font-extrabold text-white leading-tight max-w-5xl"
+      >
+
+        A Vibrant Campus
+        Designed To Empower Students
+
+      </h2>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- STUDENT EXPERIENCE -->
+
+<section
+  class="relative py-40 px-6 bg-slate-950 overflow-hidden"
+>
+
+  <!-- GLOW -->
+
+  <div
+    class="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-500/20 blur-[140px] rounded-full"
+  ></div>
+
+  <div
+    class="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-20 items-center"
+  >
+
+    <!-- LEFT CONTENT -->
+
+    <div>
+
+      <p
+        class="uppercase tracking-[8px] text-amber-300 font-semibold mb-6"
+      >
+
+        Student Experience
+
+      </p>
+
+      <h2
+        class="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-10"
+      >
+
+        Beyond Traditional Learning
+
+      </h2>
+
+      <p
+        class="text-slate-300 text-xl leading-relaxed mb-12 max-w-2xl"
+      >
+
+        Our campus environment encourages students
+        to excel academically while developing
+        creativity, communication, confidence,
+        and leadership skills.
+
+      </p>
+
+      <!-- FEATURE GRID -->
+
+      <div
+        class="grid sm:grid-cols-2 gap-6"
+      >
+
+        <!-- FEATURE -->
+
+        <div
+          class="bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] p-8 hover:-translate-y-2 transition duration-500"
+        >
+
+          <h3
+            class="text-2xl font-bold text-white mb-4"
+          >
+
+            Innovation
+
+          </h3>
+
+          <p
+            class="text-slate-300"
+          >
+
+            Inspiring modern and creative thinking.
+
+          </p>
+
+        </div>
+
+        <!-- FEATURE -->
+
+        <div
+          class="bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] p-8 hover:-translate-y-2 transition duration-500"
+        >
+
+          <h3
+            class="text-2xl font-bold text-white mb-4"
+          >
+
+            Leadership
+
+          </h3>
+
+          <p
+            class="text-slate-300"
+          >
+
+            Building confidence and responsibility.
+
+          </p>
+
+        </div>
+
+        <!-- FEATURE -->
+
+        <div
+          class="bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] p-8 hover:-translate-y-2 transition duration-500"
+        >
+
+          <h3
+            class="text-2xl font-bold text-white mb-4"
+          >
+
+            Collaboration
+
+          </h3>
+
+          <p
+            class="text-slate-300"
+          >
+
+            Encouraging teamwork and communication.
+
+          </p>
+
+        </div>
+
+        <!-- FEATURE -->
+
+        <div
+          class="bg-white/10 backdrop-blur-xl border border-white/10 rounded-[30px] p-8 hover:-translate-y-2 transition duration-500"
+        >
+
+          <h3
+            class="text-2xl font-bold text-white mb-4"
+          >
+
+            Excellence
+
+          </h3>
+
+          <p
+            class="text-slate-300"
+          >
+
+            Pursuing the highest educational standards.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT IMAGE -->
+
+    <div
+      class="relative"
+    >
+
+      <div
+        class="rounded-[45px] overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.25)]"
+      >
+
+        <img
+          src="{% static 'images/tf.jpeg' %}"
+          class="w-full h-[750px] object-cover hover:scale-105 transition duration-[2000ms]"
+        >
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SMART FACILITIES -->
+
+<section
+  class="relative py-40 px-6 bg-white overflow-hidden"
+>
+
+  <div
+    class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center"
+  >
+
+    <!-- IMAGE -->
+
+    <div
+      class="relative"
+    >
+
+      <div
+        class="rounded-[45px] overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.12)]"
+      >
+
+        <img
+          src="{% static 'images/sc.jpeg' %}"
+          class="w-full h-[650px] object-cover hover:scale-105 transition duration-[2000ms]"
+        >
+
+      </div>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div>
+
+      <p
+        class="uppercase tracking-[8px] text-blue-700 font-semibold mb-6"
+      >
+
+        Smart Learning
+
+      </p>
+
+      <h2
+        class="text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-10"
+      >
+
+        Technology-Driven Classrooms
+
+      </h2>
+
+      <p
+        class="text-slate-600 text-xl leading-relaxed mb-10 max-w-2xl"
+      >
+
+        Our smart classrooms integrate interactive
+        technology, visual learning,
+        and collaborative experiences
+        for engaging education.
+
+      </p>
+
+      <!-- CTA -->
+
+      <a
+        href="/contact/"
+        class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-900 to-indigo-900 text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:scale-105 transition duration-500"
+      >
+
+        Explore Campus
+
+        <span>
+          →
+        </span>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CTA SECTION -->
+
+<section
+  class="relative py-40 px-6 bg-gradient-to-r from-blue-900 to-indigo-900 overflow-hidden"
+>
+
+  <!-- GLOW -->
+
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-amber-300/20 blur-[180px] rounded-full"
+  ></div>
+
+  <div
+    class="max-w-5xl mx-auto relative z-10 text-center"
+  >
+
+    <p
+      class="uppercase tracking-[8px] text-amber-300 font-semibold mb-6"
+    >
+
+      Admissions Open
+
+    </p>
+
+    <h2
+      class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-10"
+    >
+
+      Experience A Premium
+      Learning Environment
+
+    </h2>
+
+    <p
+      class="text-slate-200 text-xl leading-relaxed mb-12 max-w-3xl mx-auto"
+    >
+
+      Visit our campus and discover
+      a future-focused educational experience
+      designed to inspire every student.
+
+    </p>
+
+    <!-- BUTTONS -->
+
+    <div
+      class="flex flex-wrap justify-center gap-6"
+    >
+
+      <a
+        href="/admission/"
+        class="bg-white text-slate-900 px-10 py-5 rounded-2xl text-lg font-bold hover:bg-amber-300 transition duration-500"
+      >
+
+        Apply Now
+
+      </a>
+
+      <a
+        href="/contact/"
+        class="border border-white/30 text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-white/10 transition duration-500"
+      >
+
+        Book Campus Visit
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+
+  // HERO ANIMATION
+
+  gsap.from(".facilities-subtitle",{
+    y:40,
+    opacity:0,
+    duration:1,
+    delay:0.3
+  });
+
+  gsap.from(".facilities-title",{
+    y:80,
+    opacity:0,
+    duration:1.4,
+    delay:0.6,
+    ease:"power4.out"
+  });
+
+  gsap.from(".facilities-text",{
+    y:40,
+    opacity:0,
+    duration:1.2,
+    delay:1
+  });
+
+  // FACILITY CARDS
+
+  gsap.from(".facility-card",{
+
+    scrollTrigger:{
+      trigger:".facility-card",
+      start:"top 80%"
+    },
+
+    y:100,
+    opacity:0,
+    duration:1.2,
+    stagger:0.2,
+    ease:"power4.out"
+
+  });
+
+</script>
+
+{% endblock %}

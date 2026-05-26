@@ -1,312 +1,492 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
+{% block title %}
+Contact Us
+{% endblock %}
 
-<meta charset="UTF-8" />
+{% block content %}
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- HERO SECTION -->
 
-<title>Contact - Bright Future Academy</title>
+<section
+  class="relative h-[75vh] flex items-center justify-center overflow-hidden"
+>
 
-<!-- GOOGLE FONT -->
+  <!-- VIDEO -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    class="absolute inset-0 w-full h-full object-cover"
+  >
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <source
+      src="{% static 'videos/campus.mp4' %}"
+      type="video/mp4"
+    >
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </video>
 
-<!-- TAILWIND -->
+  <!-- OVERLAY -->
 
-<script src="https://cdn.tailwindcss.com"></script>
+  <div
+    class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"
+  ></div>
 
-<style>
+  <!-- GLOW -->
 
-body{
-  font-family:'Inter',sans-serif;
-  background:#020617;
-  overflow-x:hidden;
-}
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/20 blur-[180px] rounded-full"
+  ></div>
 
-.nav-link{
-  position:relative;
-}
+  <!-- CONTENT -->
 
-.nav-link::after{
-  content:'';
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  width:0%;
-  height:2px;
-  background:#facc15;
-  transition:0.4s;
-}
+  <div
+    class="relative z-10 text-center px-6 max-w-5xl"
+  >
 
-.nav-link:hover::after{
-  width:100%;
-}
+    <p
+      class="uppercase tracking-[10px] text-amber-300 font-semibold mb-8 contact-subtitle"
+    >
 
-input,
-textarea{
-  transition:0.3s;
-}
-
-input:focus,
-textarea:focus{
-  outline:none;
-  border-color:#facc15;
-}
-
-
-::-webkit-scrollbar{
-  width:10px;
-}
-
-::-webkit-scrollbar-track{
-  background:#020617;
-}
-
-::-webkit-scrollbar-thumb{
-  background:#facc15;
-  border-radius:999px;
-}
-</style>
-
-</head>
-
-<body class="text-white">
-
-<!-- NAVBAR -->
-
-<header class="fixed top-0 left-0 w-full z-50 bg-[#020617]/80 backdrop-blur-xl border-b border-white/10">
-
-<nav class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-
-  <!-- LOGO -->
-
-  <div class="flex items-center gap-3">
-
-    <div class="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center text-white font-bold text-xl">
-
-      B
-
-    </div>
-
-    <div>
-
-      <h1 class="text-xl font-bold text-white">
-
-        Bright Future Academy
-
-      </h1>
-
-      <p class="text-sm text-amber-300 uppercase tracking-[4px] font-semibold">
-
-        Excellence In Education
-
-      </p>
-
-    </div>
-
-  </div>
-
-  <!-- MENU -->
-
-  <div class="hidden md:flex items-center gap-10">
-
-    <a href="index.html" class="nav-link text-white hover:text-amber-300">
-
-      Home
-
-    </a>
-
-    <a href="about.html" class="nav-link text-white hover:text-amber-300">
-
-      About
-
-    </a>
-
-    <a href="facilities.html" class="nav-link text-white hover:text-amber-300">
-
-      Facilities
-
-    </a>
-
-    <a href="gallery.html" class="nav-link text-white hover:text-amber-300">
-
-      Gallery
-
-    </a>
-
-    <a href="contact.html" class="nav-link text-amber-300">
-
-      Contact
-
-    </a>
-
-  </div>
-
-</nav>
-
-</header>
-
-<!-- HERO -->
-
-<section class="pt-40 pb-24 px-6">
-
-<div class="max-w-7xl mx-auto">
-
-  <!-- TITLE -->
-
-  <div class="text-center mb-20">
-
-    <p class="uppercase tracking-[6px] text-amber-300 font-semibold mb-4">
-
-      GET IN TOUCH
+      Get In Touch
 
     </p>
 
-    <h1 class="text-5xl md:text-7xl font-extrabold">
+    <h1
+      class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight mb-10 contact-title"
+    >
 
-      Contact Us
+      Let’s Build
+      A Bright Future Together
 
     </h1>
 
+    <p
+      class="text-lg md:text-2xl text-slate-200 leading-relaxed max-w-4xl mx-auto contact-text"
+    >
+
+      We’d love to help you explore our campus,
+      admissions process,
+      and educational opportunities.
+
+    </p>
+
   </div>
 
-  <!-- GRID -->
+</section>
 
-  <div class="grid lg:grid-cols-2 gap-16 items-center">
+<!-- CONTACT SECTION -->
 
-    <!-- LEFT SIDE -->
+<section
+  class="relative py-40 px-6 bg-white overflow-hidden"
+>
 
-    <div class="space-y-8">
+  <!-- GLOW -->
 
-      <!-- CARD -->
+  <div
+    class="absolute top-0 right-0 w-[700px] h-[700px] bg-blue-100 blur-[180px] rounded-full opacity-60"
+  ></div>
 
-      <div class="bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
+  <div
+  class="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-16 items-center"
+  >
 
-        <h2 class="text-3xl font-bold mb-4">
+    <!-- LEFT CONTENT -->
+  <!-- LEFT CONTENT -->
 
-          Address
+<div class="pt-6">
 
-        </h2>
+  <!-- LABEL -->
 
-        <p class="text-slate-300 text-lg">
+  <p
+    class="uppercase tracking-[8px] text-blue-700 font-semibold mb-6"
+  >
 
-          Coimbatore, Tamil Nadu
+    Contact Information
 
-        </p>
+  </p>
 
-      </div>
+  <!-- HEADING -->
 
-      <!-- CARD -->
+  <h2
+    class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-8 max-w-xl"
+  >
 
-      <div class="bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
+    We’re Here
+    To Help You
 
-        <h2 class="text-3xl font-bold mb-4">
+  </h2>
 
-          Phone Number
+  <!-- PARAGRAPH -->
 
-        </h2>
+  <p
+    class="text-slate-600 text-xl leading-relaxed mb-12 max-w-xl"
+  >
 
-        <p class="text-slate-300 text-lg">
+    Reach out for admissions,
+    campus visits,
+    academic information,
+    and student support.
 
-          +91 98765 43210
+  </p>
 
-        </p>
+  <!-- CONTACT CARDS -->
 
-      </div>
+  <div
+    class="grid gap-6 mt-12"
+  >
 
-      <!-- CARD -->
+    <!-- TOP ROW -->
 
-      <div class="bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
+    <div
+      class="grid md:grid-cols-2 gap-6"
+    >
 
-        <h2 class="text-3xl font-bold mb-4">
+      <!-- ADDRESS CARD -->
 
-          Email Address
-
-        </h2>
-
-        <p class="text-slate-300 text-lg">
-
-          info@brightfutureacademy.com
-
-        </p>
-
-      </div>
-
-    </div>
-
-    <!-- RIGHT SIDE -->
-
-    <div class="bg-white/10 backdrop-blur-xl border border-white/10 rounded-[40px] p-10">
-
-      <h2 class="text-4xl font-bold mb-10">
-
-        Send A Message
-
-      </h2>
-
-      <form class="space-y-6"
-      method="POST"
+      <div
+        class="bg-gradient-to-br from-blue-900 to-indigo-900 rounded-[35px] p-8 shadow-[0_20px_60px_rgba(30,58,138,0.18)] hover:-translate-y-2 transition duration-500"
       >
 
-        <!-- NAME -->
-
-        <input
-        type="text"
-        placeholder="Your Name"
-        class="w-full p-5 rounded-2xl bg-white/10 border border-white/10 text-white"
+        <p
+          class="uppercase tracking-[4px] text-amber-300 font-semibold mb-4"
         >
 
-        <!-- EMAIL -->
+          Campus Address
 
-        <input
-        type="email"
-        placeholder="Your Email"
-        class="w-full p-5 rounded-2xl bg-white/10 border border-white/10 text-white"
+        </p>
+
+        <h3
+          class="text-3xl font-bold text-white leading-snug"
         >
 
-        <!-- MESSAGE -->
+          Bright Future Academy
 
-        <textarea
-        rows="6"
-        placeholder="Your Message"
-        class="w-full p-5 rounded-2xl bg-white/10 border border-white/10 text-white resize-none"
-        ></textarea>
+        </h3>
 
-        <!-- BUTTON -->
-
-        <button
-        class="w-full bg-amber-300 text-black py-5 rounded-2xl font-bold text-lg hover:bg-white transition duration-300"
+        <p
+          class="text-slate-200 mt-4 text-lg"
         >
 
-          Send Message
+          Coimbatore, India
 
-        </button>
+        </p>
 
-      </form>
+      </div>
+
+      <!-- PHONE CARD -->
+
+      <div
+        class="bg-white border border-slate-200 rounded-[35px] p-8 shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:-translate-y-2 transition duration-500"
+      >
+
+        <p
+          class="uppercase tracking-[4px] text-blue-700 font-semibold mb-4"
+        >
+
+          Call Us
+
+        </p>
+
+        <h3
+          class="text-3xl font-bold text-slate-900"
+        >
+
+          +91 7550011210
+
+        </h3>
+
+        <p
+          class="text-black/50-500 mt-4 text-lg"
+        >
+
+          Mon - Fri : 8AM - 5PM
+
+        </p>
+
+      </div>
 
     </div>
+
+    <!-- EMAIL CARD -->
+
+    <div
+      class="bg-white/80 backdrop-blur-2xl border border-slate-200 rounded-[35px] p-10 shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition duration-500"
+    >
+
+      <p
+        class="uppercase tracking-[4px] text-blue-700 font-semibold mb-4"
+      >
+
+        Admissions Email
+
+      </p>
+
+      <h3
+        class="text-3xl md:text-4xl font-extrabold text-slate-900 break-words"
+      >
+
+        admissions@brightfuture.edu
+
+      </h3>
+
+      <div
+        class="w-24 h-1 bg-gradient-to-r from-amber-300 to-orange-400 rounded-full mt-6"
+      ></div>
+
+    </div>
+
+  </div>
+
+  <!-- IMAGE -->
+
+  <div
+    class="mt-12 rounded-[45px] overflow-hidden relative shadow-[0_30px_90px_rgba(0,0,0,0.12)]"
+  >
+
+    <img
+      src="{% static 'images/tf.jpeg' %}"
+      class="w-full h-[320px] object-cover hover:scale-105 transition duration-[2000ms]"
+    >
+
+    <!-- OVERLAY -->
+
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"
+    ></div>
 
   </div>
 
 </div>
+  
+
+    <!-- RIGHT FORM -->
+
+    <div
+      class="relative"
+    >
+
+      <!-- GLASS CARD -->
+
+      <div
+        class="bg-white/70 backdrop-blur-2xl border border-white/40 rounded-[45px] p-10 shadow-[0_20px_80px_rgba(0,0,0,0.08)]"
+      >
+
+        <p
+          class="uppercase tracking-[8px] text-blue-700 font-semibold mb-6"
+        >
+
+          Send Message
+
+        </p>
+
+        <h2
+          class="text-4xl font-extrabold text-slate-900 mb-10"
+        >
+
+          Let’s Connect
+
+        </h2>
+
+        {% if success %}
+
+        <!-- SUCCESS MESSAGE -->
+
+        <div
+          class="mb-8 bg-green-100 text-green-700 px-6 py-5 rounded-2xl text-lg font-semibold"
+        >
+
+          Your message has been sent successfully.
+
+        </div>
+
+        {% endif %}
+
+        <!-- FORM -->
+
+        <form
+          method="POST"
+          class="space-y-6"
+        >
+
+          {% csrf_token %}
+
+          <!-- NAME -->
+
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required
+            class="w-full bg-slate-100 border border-slate-200 rounded-2xl px-6 py-5 text-lg text-black/60 outline-none focus:border-blue-700 transition"
+          >
+
+          <!-- EMAIL -->
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            required
+            class="w-full bg-slate-100 border border-slate-200 rounded-2xl px-6 py-5 text-lg text-black/60 outline-none focus:border-blue-700 transition"
+          >
+
+          <!-- MESSAGE -->
+
+          <textarea
+            name="message"
+            rows="6"
+            placeholder="Your Message"
+            required
+            class="w-full bg-slate-100 border border-slate-200 text-black/60 rounded-2xl px-6 py-5 text-lg outline-none focus:border-blue-700 transition resize-none"
+          ></textarea>
+
+          <!-- BUTTON -->
+
+          <button
+            type="submit"
+            class="w-full bg-gradient-to-r from-blue-900 to-indigo-900 text-white py-5 rounded-2xl text-lg font-semibold hover:scale-[1.02] transition duration-500"
+          >
+
+            Send Message
+
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
 
-<!-- FOOTER -->
+<!-- MAP / CTA SECTION -->
 
-<footer class="border-t border-white/10 py-10 text-center text-slate-400">
+<section
+  class="relative py-40 px-6 bg-slate-950 overflow-hidden"
+>
 
-  © 2026 Bright Future Academy. All Rights Reserved.
+  <!-- GLOW -->
 
-</footer>
+  <div
+    class="absolute top-0 left-0 w-[700px] h-[700px] bg-blue-500/20 blur-[180px] rounded-full"
+  ></div>
 
-</body>
+  <div
+    class="max-w-6xl mx-auto relative z-10 text-center"
+  >
 
-</html>
+    <p
+      class="uppercase tracking-[8px] text-amber-300 font-semibold mb-6"
+    >
+
+      Visit Our Campus
+
+    </p>
+
+    <h2
+      class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-10"
+    >
+
+      Experience A Premium
+      Learning Environment
+
+    </h2>
+
+    <p
+      class="text-slate-300 text-xl leading-relaxed mb-10 max-w-3xl mx-auto"
+    >
+
+      Schedule a campus visit and discover
+      an inspiring environment designed
+      to empower future innovators and leaders.
+
+    </p>
+
+    <!-- BUTTONS -->
+
+    <div
+      class="flex flex-wrap justify-center gap-6"
+    >
+
+      <a
+        href="/admission/"
+        class="bg-white text-slate-900 px-10 py-5 rounded-2xl text-lg font-bold hover:bg-amber-300 transition duration-500"
+      >
+
+        Apply Now
+
+      </a>
+
+      <a
+        href="https://maps.google.com"
+        target="_blank"
+        class="border border-white/20 text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-white/10 transition duration-500"
+      >
+
+        View Location
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+
+  // HERO ANIMATION
+
+  gsap.from(".contact-subtitle",{
+    y:40,
+    opacity:0,
+    duration:1,
+    delay:0.3
+  });
+
+  gsap.from(".contact-title",{
+    y:80,
+    opacity:0,
+    duration:1.4,
+    delay:0.6,
+    ease:"power4.out"
+  });
+
+  gsap.from(".contact-text",{
+    y:40,
+    opacity:0,
+    duration:1.2,
+    delay:1
+  });
+
+  // CONTACT CARDS
+
+  gsap.from(".contact-card",{
+
+    scrollTrigger:{
+      trigger:".contact-card",
+      start:"top 85%"
+    },
+
+    y:80,
+    opacity:0,
+    duration:1,
+    stagger:0.15,
+    ease:"power4.out"
+
+  });
+
+</script>
+
+{% endblock %}

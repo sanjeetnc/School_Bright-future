@@ -1,9 +1,25 @@
 from django.shortcuts import render, redirect
-from .models import Admission, Contact , Gallery
+from .models import (
+    Admission,
+    Contact,
+    Gallery,
+    News,
+)
+from .models import AdmissionApplication
 from django.core.mail import send_mail
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 def home(request):
-    return render(request, 'index.html')
+    
+    news_items = News.objects.filter(
+        is_active=True
+    )[:10]
+
+    return render(request, 'index.html', {
+        'news_items': news_items
+    })
 
 
 def about(request):
@@ -71,25 +87,44 @@ Message:
 
 
 def admission(request):
+    
+    success = False
 
     if request.method == "POST":
 
         student_name = request.POST.get('student_name')
+
+        parent_name = request.POST.get('parent_name')
+
         email = request.POST.get('email')
+
         phone = request.POST.get('phone')
-        grade = request.POST.get('grade')
+
+        applying_class = request.POST.get('class')
+
         message = request.POST.get('message')
 
-        Admission.objects.create(
+        AdmissionApplication.objects.create(
+
             student_name=student_name,
+
+            parent_name=parent_name,
+
             email=email,
+
             phone=phone,
-            grade=grade,
+
+            applying_class=applying_class,
+
             message=message
+
         )
 
-        return render(request, 'admission.html', {
-            'success': True
-        })
+        success = True
 
-    return render(request, 'admission.html')
+    return render(request, 'admission.html', {
+
+        'success': success
+
+    })
+

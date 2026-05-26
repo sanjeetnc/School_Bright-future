@@ -1,6 +1,12 @@
 from django.contrib import admin
 
-from .models import Admission, Contact, Gallery
+from .models import (
+    Admission,
+    Contact,
+    Gallery,
+    News,
+)
+from .models import AdmissionApplication
 
 
 @admin.register(Admission)
@@ -60,3 +66,26 @@ class GalleryAdmin(admin.ModelAdmin):
     list_filter = (
         'uploaded_at',
     )
+    
+    
+    
+@admin.register(News)
+class NewsAdmin(admin.ModelAdmin):
+
+    list_display = (
+        'title',
+        'category',
+        'is_active',
+        'created_at'
+    )
+
+    list_filter = (
+        'category',
+        'is_active',
+        'created_at'
+    )
+
+    search_fields = (
+        'title',
+    )
+admin.site.register(AdmissionApplication)
