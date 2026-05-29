@@ -778,9 +778,11 @@ Home
 
         <img
           src="{% static 'images/gallery1.jpg' %}"
-          class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
+          class="w-full h-full object-cover transition duration-[2000ms] ease-out"
         >
-
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80"
+          ></div>
         <div
           class="absolute inset-0 bg-black/30"
         ></div>
@@ -790,14 +792,17 @@ Home
       <!-- IMAGE 2 -->
 
       <div
-        class="group relative overflow-hidden rounded-[35px]"
+        class="group relative overflow-hidden rounded-[35px] cursor-pointer will-change-transform"
+        style="transform-style: preserve-3d;"
       >
 
         <img
           src="{% static 'images/gallery2.jpg' %}"
-          class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
+          class="w-full h-full object-cover transition duration-[2000ms] ease-out"
         >
-
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80"
+          ></div>
         <div
           class="absolute inset-0 bg-black/30"
         ></div>
@@ -807,14 +812,17 @@ Home
       <!-- IMAGE 3 -->
 
       <div
-        class="group relative overflow-hidden rounded-[35px]"
+        class="group relative overflow-hidden rounded-[35px] cursor-pointer will-change-transform"
+        style="transform-style: preserve-3d;"
       >
 
         <img
           src="{% static 'images/gallery3.jpg' %}"
-          class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
+          class="w-full h-full object-cover transition duration-[2000ms] ease-out"
         >
-
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80"
+          ></div>
         <div
           class="absolute inset-0 bg-black/30"
         ></div>
@@ -824,14 +832,17 @@ Home
       <!-- IMAGE 4 -->
 
       <div
-        class="group relative overflow-hidden rounded-[35px]"
+        class="group relative overflow-hidden rounded-[35px] cursor-pointer will-change-transform"
+        style="transform-style: preserve-3d;"
       >
 
         <img
           src="{% static 'images/gallery4.jpg' %}"
-          class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
+          class="w-full h-full object-cover transition duration-[2000ms] ease-out"
         >
-
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80"
+          ></div>
         <div
           class="absolute inset-0 bg-black/30"
         ></div>
@@ -846,9 +857,11 @@ Home
 
         <img
           src="{% static 'images/gallery5.jpg' %}"
-          class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
+          class="w-full h-full object-cover transition duration-[2000ms] ease-out"
         >
-
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80"
+          ></div>
         <div
           class="absolute inset-0 bg-black/30"
         ></div>
@@ -858,13 +871,17 @@ Home
       <!-- IMAGE 6 -->
 
       <div
-        class="group relative overflow-hidden rounded-[35px]"
+        class="group relative overflow-hidden rounded-[35px] cursor-pointer will-change-transform"
+        style="transform-style: preserve-3d;"
       >
 
         <img
           src="{% static 'images/gallery6.jpg' %}"
-          class="w-full h-full object-cover group-hover:scale-110 transition duration-[1500ms]"
+          class="w-full h-full object-cover transition duration-[2000ms] ease-out"
         >
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80"
+        ></div>
 
         <div
           class="absolute inset-0 bg-black/30"
@@ -880,7 +897,7 @@ Home
 
       <a
         href="/gallery/"
-        class="inline-flex items-center gap-3 bg-white text-black px-10 py-5 rounded-2xl text-lg font-bold hover:bg-amber-300 transition duration-500"
+        class="inline-flex mt-20 items-center gap-3 bg-white text-black px-10 py-5 rounded-2xl text-lg font-bold hover:bg-amber-300 transition duration-500"
       >
 
         Explore Full Gallery
@@ -1042,53 +1059,191 @@ gsap.from("#about h2, #about p, #about .grid, #about a",{
 
 });
 
+
 // COUNTER ANIMATION
 
-const counters = document.querySelectorAll('.counter');
+  const counters = document.querySelectorAll(".counter");
 
-counters.forEach(counter => {
+  let counterStarted = false;
 
-  const updateCounter = () => {
+  function startCounterAnimation() {
 
-    const target = +counter.getAttribute('data-target');
+    if(counterStarted) return;
 
-    const current = +counter.innerText;
+    counterStarted = true;
 
-    const increment = target / 100;
+    counters.forEach(counter => {
 
-    if(current < target){
+      const target = +counter.getAttribute("data-target");
 
-      counter.innerText = Math.ceil(current + increment);
+      let current = 0;
 
-      setTimeout(updateCounter, 20);
+      const duration = 2000;
 
-    }else{
+      const steps = 80;
 
-      counter.innerText = target + '+';
+      const increment = target / steps;
 
-    }
+      const timer = setInterval(() => {
 
-  };
+        current += increment;
 
-  updateCounter();
+        if(current >= target){
 
-});
+          counter.innerText = target + "+";
 
-// GALLERY REVEAL
+          clearInterval(timer);
 
-gsap.from("#gallery-preview .group",{
+        } else {
 
-  scrollTrigger:{
-    trigger:"#gallery-preview",
-    start:"top 75%"
-  },
+          counter.innerText = Math.floor(current);
 
-  y:100,
-  opacity:0,
-  duration:1.2,
-  stagger:0.15
+        }
 
-});
+      }, duration / steps);
+
+    });
+
+  }
+
+  // SCROLL TRIGGER
+
+  ScrollTrigger.create({
+
+    trigger: "#stats",
+
+    start: "top 75%",
+
+    onEnter: startCounterAnimation
+
+  });
+
+// CINEMATIC GALLERY REVEAL
+
+  gsap.from("#gallery-preview .group", {
+
+    scrollTrigger: {
+      trigger: "#gallery-preview",
+      start: "top 75%",
+    },
+
+    y: 120,
+    opacity: 0,
+    scale: 0.9,
+    duration: 1.5,
+    stagger: 0.18,
+    ease: "power4.out"
+
+  });
+
+
+
+
+  // PARALLAX FLOAT EFFECT
+
+  gsap.utils.toArray("#gallery-preview .group").forEach((card, i) => {
+
+    gsap.to(card, {
+
+      y: i % 2 === 0 ? -20 : 20,
+
+      duration: 4,
+
+      repeat: -1,
+
+      yoyo: true,
+
+      ease: "sine.inOut"
+
+    });
+
+  });
+
+
+
+
+  // PREMIUM HOVER ANIMATION
+
+  const galleryCards = document.querySelectorAll("#gallery-preview .group");
+
+  galleryCards.forEach(card => {
+
+    const image = card.querySelector("img");
+
+    card.addEventListener("mousemove", (e) => {
+
+      const rect = card.getBoundingClientRect();
+
+      const x = e.clientX - rect.left;
+
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -6;
+
+      const rotateY = ((x - centerX) / centerX) * 6;
+
+      gsap.to(card, {
+
+        rotateX: rotateX,
+
+        rotateY: rotateY,
+
+        transformPerspective: 1000,
+
+        duration: 0.5,
+
+        ease: "power2.out"
+
+      });
+
+      gsap.to(image, {
+
+        scale: 1.12,
+
+        duration: 0.5,
+
+        ease: "power2.out"
+
+      });
+
+    });
+
+
+
+
+    // RESET
+
+    card.addEventListener("mouseleave", () => {
+
+      gsap.to(card, {
+
+        rotateX: 0,
+
+        rotateY: 0,
+
+        duration: 0.7,
+
+        ease: "power3.out"
+
+      });
+
+      gsap.to(image, {
+
+        scale: 1,
+
+        duration: 0.7,
+
+        ease: "power3.out"
+
+      });
+
+    });
+
+  });
 
 </script>
 
